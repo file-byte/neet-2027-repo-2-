@@ -1,0 +1,4503 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>NEET UG 2027 — iOS Liquid Glass Command Center</title>
+  <style>
+    /* ==========================================================================
+       APPLE iOS LIQUID GLASS DESIGN SYSTEM
+       100% Offline, Zero External CDNs, Authentic Apple System Colors & Physics
+       ========================================================================== */
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+      --font-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Apple System Palette (Zero Indigo / Cyan) */
+      --ios-blue: #0A84FF;
+      --ios-blue-grad: linear-gradient(180deg, #2997FF 0%, #0A84FF 100%);
+      --ios-green: #30D158;
+      --ios-green-grad: linear-gradient(180deg, #4CD964 0%, #30D158 100%);
+      --ios-orange: #FF9F0A;
+      --ios-orange-grad: linear-gradient(180deg, #FFB340 0%, #FF9F0A 100%);
+      --ios-red: #FF453A;
+      --ios-red-grad: linear-gradient(180deg, #FF6961 0%, #FF453A 100%);
+      --ios-purple: #BF5AF2;
+      --ios-purple-grad: linear-gradient(180deg, #DA8FFF 0%, #BF5AF2 100%);
+
+      /* Subject Mapping to Apple System Tokens */
+      --phy: #0A84FF;
+      --phy-grad: var(--ios-blue-grad);
+      --phy-soft: rgba(10, 132, 255, 0.16);
+      --phy-border: rgba(10, 132, 255, 0.36);
+
+      --chem: #FF9F0A;
+      --chem-grad: var(--ios-orange-grad);
+      --chem-soft: rgba(255, 159, 10, 0.16);
+      --chem-border: rgba(255, 159, 10, 0.36);
+
+      --bot: #30D158;
+      --bot-grad: var(--ios-green-grad);
+      --bot-soft: rgba(48, 209, 88, 0.16);
+      --bot-border: rgba(48, 209, 88, 0.36);
+
+      --zoo: #FF453A;
+      --zoo-grad: var(--ios-red-grad);
+      --zoo-soft: rgba(255, 69, 58, 0.16);
+      --zoo-border: rgba(255, 69, 58, 0.36);
+
+      --accent: var(--ios-blue);
+      --brand-grad: var(--ios-blue-grad);
+      --success: var(--ios-green);
+      --warning: var(--ios-orange);
+      --danger: var(--ios-red);
+      --purple: var(--ios-purple);
+
+      /* iOS Squircle Radii */
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-xl: 28px;
+      --radius-pill: 999px;
+      --sidebar-w: 262px;
+
+      /* iPhone Spring Physics Curves */
+      --ios-spring: cubic-bezier(0.32, 0.72, 0, 1);
+      --ios-bounce: cubic-bezier(0.34, 1.45, 0.64, 1);
+      --transition: 280ms cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg-app: #000000;
+      --glass-sidebar: rgba(24, 24, 26, 0.66);
+      --glass-surface: rgba(28, 28, 30, 0.58);
+      --glass-surface-solid: #1C1C1E;
+      --glass-surface-2: rgba(44, 44, 46, 0.54);
+      --glass-hover: rgba(255, 255, 255, 0.08);
+      --glass-input: rgba(36, 36, 38, 0.72);
+
+      --border: rgba(255, 255, 255, 0.12);
+      --border-strong: rgba(255, 255, 255, 0.22);
+      --specular-top: inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+      --specular-soft: inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+
+      --text-primary: #FFFFFF;
+      --text-secondary: rgba(235, 235, 245, 0.68);
+      --text-muted: rgba(235, 235, 245, 0.42);
+
+      --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.44), var(--specular-soft);
+      --shadow-md: 0 18px 44px rgba(0, 0, 0, 0.62), var(--specular-top);
+      --shadow-glow: 0 8px 26px rgba(10, 132, 255, 0.22), var(--specular-top);
+      --track-bg: rgba(120, 120, 128, 0.28);
+
+      --orb-1: rgba(10, 132, 255, 0.18);
+      --orb-2: rgba(191, 90, 242, 0.15);
+      --orb-3: rgba(48, 209, 88, 0.12);
+    }
+
+    [data-theme="light"] {
+      --bg-app: #F2F2F7;
+      --glass-sidebar: rgba(255, 255, 255, 0.74);
+      --glass-surface: rgba(255, 255, 255, 0.68);
+      --glass-surface-solid: #FFFFFF;
+      --glass-surface-2: rgba(242, 242, 247, 0.78);
+      --glass-hover: rgba(0, 0, 0, 0.04);
+      --glass-input: rgba(255, 255, 255, 0.85);
+
+      --border: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.16);
+      --specular-top: inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+      --specular-soft: inset 0 1px 0 0 rgba(255, 255, 255, 0.85);
+
+      --text-primary: #000000;
+      --text-secondary: rgba(60, 60, 67, 0.72);
+      --text-muted: rgba(60, 60, 67, 0.45);
+
+      --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.06), var(--specular-soft);
+      --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.11), var(--specular-top);
+      --shadow-glow: 0 8px 24px rgba(10, 132, 255, 0.18), var(--specular-top);
+      --track-bg: rgba(120, 120, 128, 0.18);
+
+      --orb-1: rgba(10, 132, 255, 0.15);
+      --orb-2: rgba(191, 90, 242, 0.12);
+      --orb-3: rgba(48, 209, 88, 0.11);
+    }
+
+    /* ==========================================================================
+       iOS SPRING & LIQUID GLASS KEYFRAMES
+       ========================================================================== */
+    @keyframes iosMeshFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-1.5%, 1.5%, 0) scale(1.03); }
+    }
+
+    @keyframes iosViewEnter {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.99);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes iosSheetPop {
+      from {
+        opacity: 0;
+        transform: scale(0.92) translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @keyframes iosToastDrop {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.94);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.55); }
+      50% { transform: scale(1.14); box-shadow: 0 0 0 6px rgba(48, 209, 88, 0); }
+    }
+
+    @keyframes timerPulseGlass {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+      50% { box-shadow: 0 0 32px 4px rgba(10, 132, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      line-height: 1.48;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 320ms var(--ios-spring), color 320ms var(--ios-spring);
+    }
+
+    /* Subtle iOS Wallpaper Ambient Glow (Strictly Non-Interactive) */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -12%;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 16% 14%, var(--orb-1) 0%, transparent 42%),
+        radial-gradient(circle at 84% 20%, var(--orb-2) 0%, transparent 44%),
+        radial-gradient(circle at 50% 88%, var(--orb-3) 0%, transparent 46%);
+      animation: iosMeshFloat 24s ease-in-out infinite;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      touch-action: manipulation;
+    }
+
+    a {
+      color: var(--ios-blue);
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    a:hover { opacity: 0.85; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; }
+
+    /* ==========================================================================
+       APP SHELL & iOS LIQUID GLASS SIDEBAR
+       ========================================================================== */
+    .app-shell {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      background: var(--glass-sidebar);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border-right: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      z-index: 30;
+      padding: 22px 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 8px 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: var(--ios-blue-grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px rgba(10, 132, 255, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+      flex-shrink: 0;
+      transition: transform 320ms var(--ios-bounce);
+    }
+    .brand:hover .brand-icon { transform: scale(1.06); }
+
+    .brand-text h1 {
+      font-size: 1.04rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    .brand-text span {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-align: left;
+      transition: background var(--transition), color var(--transition), transform 220ms var(--ios-spring), box-shadow var(--transition);
+      min-height: 46px;
+    }
+
+    .nav-btn:hover {
+      background: var(--glass-hover);
+      color: var(--text-primary);
+    }
+
+    .nav-btn:active {
+      transform: scale(0.96);
+    }
+
+    .nav-btn.active {
+      background: var(--glass-surface-2);
+      color: var(--ios-blue);
+      font-weight: 600;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-btn svg {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+
+    .sidebar-footer {
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .theme-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      background: var(--glass-surface-2);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      min-height: 44px;
+      transition: transform 220ms var(--ios-spring), border-color var(--transition);
+    }
+    .theme-toggle-btn:hover { border-color: var(--border-strong); }
+    .theme-toggle-btn:active { transform: scale(0.96); }
+
+    .offline-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.73rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 2px 6px;
+    }
+
+    .dot-live {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ios-green);
+      animation: pulseDot 2.6s infinite;
+      flex-shrink: 0;
+    }
+
+    .main-column {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Mobile Topbar & Floating Pill Strip */
+    .mobile-topbar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--glass-sidebar);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 35;
+    }
+
+    .mobile-nav-strip {
+      display: none;
+      background: var(--glass-sidebar);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border-bottom: 1px solid var(--border);
+      padding: 9px 12px;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .mobile-nav-strip::-webkit-scrollbar { display: none; }
+
+    .mobile-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      color: var(--text-secondary);
+      font-size: 0.83rem;
+      font-weight: 600;
+      white-space: nowrap;
+      min-height: 40px;
+      transition: all 240ms var(--ios-spring);
+    }
+
+    .mobile-tab:active { transform: scale(0.94); }
+
+    .mobile-tab.active {
+      background: var(--ios-blue-grad);
+      border-color: transparent;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(10, 132, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+    }
+
+    /* ==========================================================================
+       COMMAND HEADER: LIQUID GLASS COUNTDOWN & DYNAMIC PACE ENGINE
+       ========================================================================== */
+    .command-header {
+      background: var(--glass-surface);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      padding: 18px 26px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px 24px;
+      align-items: center;
+    }
+
+    .countdown-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .target-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .target-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      font-weight: 700;
+    }
+
+    .date-input-inline {
+      background: var(--glass-input);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      border-radius: 11px;
+      padding: 5px 10px;
+      font-size: 0.81rem;
+      font-weight: 600;
+      color: var(--ios-blue);
+      cursor: pointer;
+      min-height: 36px;
+      transition: border-color var(--transition), transform 200ms var(--ios-spring);
+    }
+    .date-input-inline:focus { border-color: var(--ios-blue); outline: none; }
+
+    .date-preset-btn {
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      color: var(--text-secondary);
+      font-weight: 600;
+      min-height: 36px;
+      transition: all 240ms var(--ios-spring);
+    }
+    .date-preset-btn:active { transform: scale(0.94); }
+    .date-preset-btn:hover, .date-preset-btn.active {
+      background: var(--ios-blue);
+      border-color: transparent;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(10, 132, 255, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    .countdown-grid {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .cd-unit {
+      background: var(--glass-surface-2);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-top);
+      border-radius: 15px;
+      padding: 8px 12px;
+      min-width: 64px;
+      text-align: center;
+      transition: transform 260ms var(--ios-bounce);
+    }
+    .cd-unit:hover { transform: translateY(-2px); }
+
+    .cd-unit.cd-days {
+      background: linear-gradient(180deg, rgba(10, 132, 255, 0.24) 0%, rgba(10, 132, 255, 0.12) 100%);
+      border-color: rgba(10, 132, 255, 0.42);
+    }
+
+    .cd-val {
+      font-family: var(--font-mono);
+      font-size: 1.42rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    .cd-unit.cd-days .cd-val { color: var(--ios-blue); }
+
+    .cd-lbl {
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    .pace-panel {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+      gap: 12px;
+      align-items: center;
+      background: var(--glass-surface-2);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-top);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+    }
+
+    .pace-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .pace-metric-lbl {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pace-metric-val {
+      font-family: var(--font-mono);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pace-metric-sub {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    .pace-status-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      border-radius: var(--radius-pill);
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow: var(--specular-soft);
+    }
+
+    .status-on-track {
+      background: rgba(48, 209, 88, 0.18);
+      color: var(--ios-green);
+      border: 1px solid rgba(48, 209, 88, 0.42);
+    }
+
+    .status-ahead {
+      background: rgba(10, 132, 255, 0.18);
+      color: var(--ios-blue);
+      border: 1px solid rgba(10, 132, 255, 0.42);
+    }
+
+    .status-behind {
+      background: rgba(255, 69, 58, 0.18);
+      color: var(--ios-red);
+      border: 1px solid rgba(255, 69, 58, 0.42);
+    }
+
+    /* ==========================================================================
+       CONTENT VIEWS & iOS LIQUID GLASS CARDS
+       ========================================================================== */
+    .content-area {
+      padding: 24px 26px 56px;
+      max-width: 1460px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .view-section { display: none; }
+    .view-section.active {
+      display: block;
+      animation: iosViewEnter 340ms var(--ios-spring) both;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .section-head p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .card {
+      background: var(--glass-surface);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 280ms var(--ios-spring), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .card-subtitle {
+      font-size: 0.79rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .grid-overview-main { display: grid; grid-template-columns: 344px 1fr; gap: 18px; margin-top: 18px; }
+    .mb-16 { margin-bottom: 18px; }
+    .mt-16 { margin-top: 18px; }
+
+    /* iOS Liquid Glass KPI Widgets */
+    .kpi-card {
+      background: var(--glass-surface);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 280ms var(--ios-bounce), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-md);
+    }
+
+    .kpi-label {
+      font-size: 0.74rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .kpi-label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--kpi-dot, var(--ios-blue));
+      flex-shrink: 0;
+    }
+
+    .kpi-value {
+      font-family: var(--font-mono);
+      font-size: 1.72rem;
+      font-weight: 700;
+      line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.025em;
+    }
+
+    .kpi-sub {
+      font-size: 0.79rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* iOS Pill & Squircle Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      min-height: 44px;
+      transition: transform 220ms var(--ios-bounce), background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition), opacity var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn:hover { opacity: 0.94; }
+    .btn:active { transform: scale(0.94); }
+
+    .btn-primary {
+      background: var(--ios-blue-grad);
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px rgba(10, 132, 255, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    }
+
+    .btn-secondary {
+      background: var(--glass-surface-2);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      color: var(--text-primary);
+    }
+    .btn-secondary:hover {
+      border-color: var(--border-strong);
+      background: var(--glass-hover);
+    }
+
+    .btn-danger {
+      background: rgba(255, 69, 58, 0.16);
+      border: 1px solid rgba(255, 69, 58, 0.42);
+      box-shadow: var(--specular-soft);
+      color: var(--ios-red);
+    }
+    .btn-danger:hover {
+      background: var(--ios-red);
+      color: #FFFFFF;
+    }
+
+    .btn-success {
+      background: rgba(48, 209, 88, 0.16);
+      border: 1px solid rgba(48, 209, 88, 0.42);
+      box-shadow: var(--specular-soft);
+      color: var(--ios-green);
+    }
+    .btn-success:hover {
+      background: var(--ios-green);
+      color: #000000;
+    }
+
+    .btn-sm {
+      padding: 7px 14px;
+      font-size: 0.79rem;
+      min-height: 38px;
+    }
+
+    /* Dedicated iOS Chime Toggle Button */
+    .chime-toggle-btn {
+      border: 1px solid var(--border);
+      background: var(--glass-surface-2);
+      box-shadow: var(--specular-soft);
+      color: var(--text-secondary);
+      font-weight: 700;
+    }
+    .chime-toggle-btn.chime-on {
+      background: rgba(48, 209, 88, 0.2);
+      border-color: rgba(48, 209, 88, 0.48);
+      color: var(--ios-green);
+      box-shadow: 0 4px 14px rgba(48, 209, 88, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .chime-toggle-btn.chime-off {
+      background: var(--glass-surface-2);
+      border-color: var(--border);
+      color: var(--text-muted);
+    }
+
+    /* iOS Frosted Inputs */
+    .input, .select, .textarea {
+      width: 100%;
+      background: var(--glass-input);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      font-size: 0.89rem;
+      color: var(--text-primary);
+      min-height: 44px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    .input:focus, .select:focus, .textarea:focus {
+      border-color: var(--ios-blue);
+      box-shadow: 0 0 0 3.5px rgba(10, 132, 255, 0.22);
+    }
+
+    .textarea { min-height: 84px; resize: vertical; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-label { font-size: 0.79rem; font-weight: 600; color: var(--text-secondary); }
+
+    /* Apple Activity-Style Smooth Progress Bars */
+    .bar-track {
+      width: 100%;
+      height: 10px;
+      border-radius: var(--radius-pill);
+      background: var(--track-bg);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: var(--radius-pill);
+      transition: width 480ms var(--ios-spring);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    /* iOS Capsule Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.71rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .badge-phy { background: var(--phy-soft); color: var(--phy); border: 1px solid var(--phy-border); }
+    .badge-chem { background: var(--chem-soft); color: var(--chem); border: 1px solid var(--chem-border); }
+    .badge-bot { background: var(--bot-soft); color: var(--bot); border: 1px solid var(--bot-border); }
+    .badge-zoo { background: var(--zoo-soft); color: var(--zoo); border: 1px solid var(--zoo-border); }
+    .badge-neutral { background: var(--glass-surface-2); color: var(--text-secondary); border: 1px solid var(--border); }
+    .badge-hw { background: rgba(255, 159, 10, 0.16); color: var(--ios-orange); border: 1px solid rgba(255, 159, 10, 0.38); }
+    .badge-phase { background: rgba(191, 90, 242, 0.16); color: var(--ios-purple); border: 1px solid rgba(191, 90, 242, 0.38); }
+
+    /* ==========================================================================
+       VIEW 1: OVERVIEW & ANALYTICS
+       ========================================================================== */
+    .donut-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 0 4px;
+    }
+
+    .donut-svg {
+      width: 214px;
+      height: 214px;
+    }
+
+    #donutArc {
+      transition: stroke-dashoffset 560ms var(--ios-spring);
+    }
+
+    .donut-legend {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .donut-stat {
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      text-align: center;
+      transition: transform 240ms var(--ios-bounce);
+    }
+    .donut-stat:hover { transform: translateY(-2px); }
+
+    .donut-stat-val { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; }
+    .donut-stat-lbl { font-size: 0.71rem; color: var(--text-muted); font-weight: 500; margin-top: 1px; }
+
+    .subject-row {
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      margin-bottom: 11px;
+      cursor: pointer;
+      transition: transform 260ms var(--ios-spring), border-color var(--transition), background var(--transition);
+    }
+    .subject-row:last-child { margin-bottom: 0; }
+    .subject-row:hover { border-color: var(--border-strong); background: var(--glass-hover); }
+    .subject-row:active { transform: scale(0.98); }
+
+    .subject-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .subject-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .subject-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .subject-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); }
+
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .stage-card {
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: transform 260ms var(--ios-bounce);
+    }
+    .stage-card:hover { transform: translateY(-2px); }
+
+    .stage-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .stage-card-num { font-family: var(--font-mono); font-size: 1.32rem; font-weight: 700; }
+
+    .quick-hw-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      margin-bottom: 9px;
+      transition: transform 240ms var(--ios-spring), border-color var(--transition);
+    }
+    .quick-hw-item:last-child { margin-bottom: 0; }
+    .quick-hw-item:hover { border-color: var(--border-strong); }
+
+    /* ==========================================================================
+       VIEW 2: SYLLABUS TRACKER
+       ========================================================================== */
+    .filter-toolbar {
+      background: var(--glass-surface);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .search-wrap { position: relative; flex: 1 1 240px; }
+    .search-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .search-wrap .input { padding-left: 40px; border-radius: var(--radius-pill); }
+    .filter-select { flex: 0 1 165px; min-width: 140px; border-radius: var(--radius-pill); }
+
+    .subject-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .pill-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.81rem;
+      font-weight: 600;
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      color: var(--text-secondary);
+      min-height: 40px;
+      transition: all 240ms var(--ios-spring);
+    }
+
+    .pill-btn:hover { color: var(--text-primary); border-color: var(--border-strong); }
+    .pill-btn:active { transform: scale(0.94); }
+    .pill-btn.active {
+      background: var(--ios-blue-grad);
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 4px 14px rgba(10, 132, 255, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+    }
+    .pill-btn.active[data-subj="Physics"] { background: var(--phy-grad); color: #FFFFFF; }
+    .pill-btn.active[data-subj="Chemistry"] { background: var(--chem-grad); color: #000000; }
+    .pill-btn.active[data-subj="Botany"] { background: var(--bot-grad); color: #000000; }
+    .pill-btn.active[data-subj="Zoology"] { background: var(--zoo-grad); color: #FFFFFF; }
+
+    .syllabus-summary-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    .chapter-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .chapter-card {
+      background: var(--glass-surface);
+      backdrop-filter: blur(26px) saturate(185%);
+      -webkit-backdrop-filter: blur(26px) saturate(185%);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--subj-accent, var(--ios-blue));
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 260ms var(--ios-spring), border-color var(--transition), background var(--transition);
+    }
+
+    .chapter-card:hover { border-color: var(--border-strong); }
+
+    .chapter-card.is-complete {
+      background: linear-gradient(105deg, rgba(48, 209, 88, 0.14), var(--glass-surface) 52%);
+      border-color: rgba(48, 209, 88, 0.38);
+    }
+
+    .chapter-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .chapter-info { flex: 1 1 280px; min-width: 0; }
+    .chapter-title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+    .chapter-title { font-size: 0.99rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.015em; }
+    .chapter-badges { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .chapter-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    .hrs-edit-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      border-radius: var(--radius-pill);
+      padding: 3px 12px;
+      min-height: 40px;
+    }
+
+    .hrs-input {
+      width: 48px;
+      background: transparent;
+      border: none;
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    .hrs-unit { font-size: 0.73rem; color: var(--text-muted); font-weight: 500; }
+
+    .icon-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 13px;
+      border-radius: var(--radius-pill);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      min-height: 40px;
+      transition: all 220ms var(--ios-spring);
+    }
+
+    .icon-action-btn:hover { border-color: var(--border-strong); color: var(--text-primary); }
+    .icon-action-btn:active { transform: scale(0.94); }
+    .icon-action-btn.has-data {
+      color: var(--ios-blue);
+      border-color: rgba(10, 132, 255, 0.38);
+      background: rgba(10, 132, 255, 0.14);
+    }
+
+    .chapter-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .stage-toggles { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+
+    .stage-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: var(--radius-pill);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      min-height: 40px;
+      user-select: none;
+      transition: all 240ms var(--ios-bounce);
+    }
+
+    .stage-chip:hover { border-color: var(--border-strong); color: var(--text-primary); }
+    .stage-chip:active { transform: scale(0.93); }
+
+    .stage-chip .chk-box {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      pointer-events: none;
+      transition: all 240ms var(--ios-bounce);
+    }
+
+    .stage-chip.checked {
+      background: rgba(48, 209, 88, 0.18);
+      border-color: rgba(48, 209, 88, 0.52);
+      color: var(--ios-green);
+    }
+
+    .stage-chip.checked .chk-box {
+      background: var(--ios-green);
+      border-color: var(--ios-green);
+      color: #000000;
+      transform: scale(1.08);
+    }
+
+    .chapter-progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 150px;
+      flex: 0 1 195px;
+    }
+
+    .chapter-pct { font-family: var(--font-mono); font-size: 0.83rem; font-weight: 700; min-width: 40px; text-align: right; }
+
+    .chapter-note-drawer {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      animation: iosViewEnter 240ms var(--ios-spring);
+    }
+
+    /* ==========================================================================
+       VIEW 3: 160-DAY 4-PHASE ROADMAP
+       ========================================================================== */
+    .timeline-banner {
+      background: var(--glass-surface);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-track {
+      position: relative;
+      height: 12px;
+      border-radius: var(--radius-pill);
+      background: var(--track-bg);
+      overflow: hidden;
+      margin: 13px 0 9px;
+    }
+
+    .timeline-elapsed {
+      height: 100%;
+      background: linear-gradient(90deg, var(--ios-blue), var(--ios-purple), var(--ios-green));
+      border-radius: var(--radius-pill);
+      transition: width 520ms var(--ios-spring);
+    }
+
+    .phase-card {
+      background: var(--glass-surface);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 280ms var(--ios-spring), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .phase-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-md);
+    }
+
+    .phase-card.is-current {
+      border-color: var(--ios-blue);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .phase-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+    .phase-tag {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 11px;
+      border-radius: var(--radius-pill);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+    }
+    .phase-dates { font-family: var(--font-mono); font-size: 0.79rem; color: var(--ios-blue); font-weight: 600; }
+
+    .phase-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+    .phase-stat-box {
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      text-align: center;
+    }
+    .phase-stat-num { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; }
+    .phase-stat-lbl { font-size: 0.69rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+
+    .milestone-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .milestone-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 13px;
+      border-radius: var(--radius-md);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-align: left;
+      min-height: 44px;
+      transition: all 220ms var(--ios-spring);
+    }
+
+    .milestone-item:active { transform: scale(0.98); }
+
+    .milestone-item.done {
+      color: var(--text-muted);
+      text-decoration: line-through;
+      border-color: rgba(48, 209, 88, 0.36);
+      background: rgba(48, 209, 88, 0.08);
+    }
+
+    .milestone-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-size: 11px;
+      pointer-events: none;
+      transition: all 220ms var(--ios-bounce);
+    }
+
+    .milestone-item.done .milestone-box {
+      background: var(--ios-green);
+      border-color: var(--ios-green);
+      color: #000000;
+      font-weight: 800;
+    }
+
+    /* ==========================================================================
+       VIEW 4: POMODORO & DAILY PLANNER
+       ========================================================================== */
+    .timer-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .timer-display-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 0 6px;
+    }
+
+    .timer-ring-wrap {
+      position: relative;
+      width: 248px;
+      height: 248px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-top);
+    }
+
+    .timer-ring-wrap.is-running {
+      animation: timerPulseGlass 2.6s ease-in-out infinite;
+    }
+
+    .timer-ring-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+      pointer-events: none;
+    }
+
+    #timerRingArc {
+      transition: stroke-dashoffset 280ms linear, stroke 240ms ease;
+    }
+
+    .timer-center { position: relative; text-align: center; z-index: 2; }
+    .timer-clock {
+      font-family: var(--font-mono);
+      font-size: 2.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+    }
+    .timer-mode-lbl {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ios-blue);
+      font-weight: 700;
+      margin-top: 5px;
+    }
+
+    .preset-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; width: 100%; }
+    .preset-btn {
+      padding: 10px 8px;
+      border-radius: var(--radius-md);
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      text-align: center;
+      min-height: 56px;
+      transition: all 240ms var(--ios-spring);
+    }
+    .preset-btn:active { transform: scale(0.95); }
+    .preset-btn.active {
+      background: rgba(10, 132, 255, 0.18);
+      border-color: rgba(10, 132, 255, 0.48);
+      color: var(--ios-blue);
+    }
+    .preset-btn strong { display: block; font-family: var(--font-mono); font-size: 0.92rem; pointer-events: none; }
+    .preset-btn span { font-size: 0.69rem; color: var(--text-muted); font-weight: 500; pointer-events: none; }
+
+    .heatmap-14 { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 5px; margin-top: 10px; }
+    .heat-cell {
+      aspect-ratio: 1;
+      border-radius: 9px;
+      background: var(--track-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      transition: transform 200ms var(--ios-bounce);
+    }
+    .heat-cell:hover { transform: scale(1.12); z-index: 2; }
+    .heat-lvl-1 { background: rgba(48, 209, 88, 0.26); border-color: rgba(48, 209, 88, 0.42); color: var(--text-primary); font-weight: 600; }
+    .heat-lvl-2 { background: rgba(48, 209, 88, 0.54); border-color: rgba(48, 209, 88, 0.72); color: #FFFFFF; font-weight: 700; }
+    .heat-lvl-3 { background: var(--ios-green); border-color: var(--ios-green); color: #000000; font-weight: 700; }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      background: var(--glass-surface-2);
+      border: 1px solid var(--border);
+      box-shadow: var(--specular-soft);
+      border-radius: var(--radius-md);
+      margin-bottom: 8px;
+      transition: all 220ms var(--ios-spring);
+    }
+    .task-item.done .task-text { text-decoration: line-through; color: var(--text-muted); }
+
+    .task-check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 220ms var(--ios-bounce);
+    }
+    .task-item.done .task-check { background: var(--ios-green); border-color: var(--ios-green); color: #000000; font-weight: 800; }
+    .task-text { flex: 1; font-size: 0.89rem; font-weight: 500; word-break: break-word; }
+
+    .prio-high { background: rgba(255, 69, 58, 0.16); color: var(--ios-red); border: 1px solid rgba(255, 69, 58, 0.36); }
+    .prio-medium { background: rgba(255, 159, 10, 0.16); color: var(--ios-orange); border: 1px solid rgba(255, 159, 10, 0.36); }
+    .prio-low { background: rgba(10, 132, 255, 0.16); color: var(--ios-blue); border: 1px solid rgba(10, 132, 255, 0.36); }
+
+    /* ==========================================================================
+       VIEW 5: MOCK TEST SCORE LOG (/720)
+       ========================================================================== */
+    .mock-form-grid {
+      display: grid;
+      grid-template-columns: 145px 1.6fr repeat(3, 108px) auto;
+      gap: 11px;
+      align-items: end;
+    }
+
+    .chart-box { width: 100%; overflow: hidden; position: relative; }
+    .mock-chart-svg { width: 100%; height: 270px; display: block; }
+
+    .chart-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--glass-surface-solid);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-md);
+      border-radius: var(--radius-md);
+      padding: 10px 13px;
+      font-size: 0.78rem;
+      z-index: 15;
+      display: none;
+      max-width: 240px;
+    }
+
+    .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 600px; }
+    .data-table th {
+      text-align: left;
+      padding: 11px 13px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--glass-surface-2);
+    }
+    .data-table td { padding: 12px 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .data-table tr:hover td { background: var(--glass-hover); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .score-pill { font-family: var(--font-mono); font-weight: 700; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 0.82rem; display: inline-block; }
+
+    /* ==========================================================================
+       VIEW 6: BACKUP, iOS SHEETS/MODALS & TOASTS
+       ========================================================================== */
+    .drop-zone {
+      border: 1.5px dashed var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 26px 16px;
+      text-align: center;
+      background: var(--glass-surface-2);
+      cursor: pointer;
+      transition: all 240ms var(--ios-spring);
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--ios-blue);
+      background: rgba(10, 132, 255, 0.1);
+    }
+
+    /* CRITICAL: Strictly display:none when closed so zero overlays ever intercept clicks */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--glass-surface-solid);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-md);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+      animation: iosSheetPop 300ms var(--ios-spring);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .modal-head h3 { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.015em; }
+
+    .modal-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      background: var(--glass-surface-2);
+      transition: transform 200ms var(--ios-spring);
+    }
+    .modal-close:active { transform: scale(0.9); }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .toast-stack {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      z-index: 120;
+      pointer-events: none;
+      max-width: calc(100vw - 32px);
+    }
+
+    .toast {
+      background: var(--glass-surface);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--border-strong);
+      border-left: 4px solid var(--ios-blue);
+      box-shadow: var(--shadow-md);
+      color: var(--text-primary);
+      padding: 12px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      pointer-events: auto;
+      animation: iosToastDrop 300ms var(--ios-bounce);
+    }
+    .toast.toast-success { border-left-color: var(--ios-green); }
+    .toast.toast-warning { border-left-color: var(--ios-orange); }
+    .toast.toast-danger { border-left-color: var(--ios-red); }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (TABLET & MOBILE OPTIMIZED)
+       ========================================================================== */
+    @media (max-width: 1180px) {
+      .command-header { grid-template-columns: 1fr; }
+      .pace-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pace-status-wrap {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 9px;
+        border-top: 1px solid var(--border);
+      }
+      .grid-overview-main { grid-template-columns: 1fr; }
+      .mock-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 960px) {
+      .sidebar { display: none; }
+      .mobile-topbar, .mobile-nav-strip { display: flex; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-2, .timer-layout { grid-template-columns: 1fr; }
+      .stage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .content-area { padding: 18px 16px 44px; }
+      .command-header { padding: 16px; }
+    }
+
+    @media (max-width: 560px) {
+      .cd-unit { min-width: 54px; padding: 6px 8px; }
+      .cd-val { font-size: 1.2rem; }
+      .preset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .heatmap-14 { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+      .mock-form-grid { grid-template-columns: 1fr; }
+      .kpi-value { font-size: 1.42rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- DESKTOP / TABLET LANDSCAPE iOS SIDEBAR -->
+    <aside class="sidebar" aria-label="Primary Navigation">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>NEET UG 2027</h1>
+          <span>Command Center</span>
+        </div>
+      </div>
+
+      <nav class="nav-list" id="sidebarNav">
+        <button type="button" class="nav-btn active" data-tab="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></svg>
+          Overview &amp; Analytics
+        </button>
+        <button type="button" class="nav-btn" data-tab="syllabus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Syllabus Tracker (83)
+        </button>
+        <button type="button" class="nav-btn" data-tab="phases">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          160-Day Roadmap
+        </button>
+        <button type="button" class="nav-btn" data-tab="pomodoro">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4"/><path d="M12 14v-4"/><circle cx="12" cy="14" r="8"/></svg>
+          Focus &amp; CBT Timer
+        </button>
+        <button type="button" class="nav-btn" data-tab="mocks">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Mock Test Log (/720)
+        </button>
+        <button type="button" class="nav-btn" data-tab="backup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Data Backup
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="theme-toggle-btn" id="themeToggleSidebar" type="button">
+          <span id="themeLabelSidebar">Dark Appearance</span>
+          <span id="themeIconSidebar" aria-hidden="true">🌙</span>
+        </button>
+        <div class="offline-pill">
+          <span class="dot-live"></span>
+          <span>100% Offline • Auto-Saved</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN COLUMN -->
+    <div class="main-column">
+      <!-- Mobile / Portrait Topbar -->
+      <div class="mobile-topbar">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="brand-icon" style="width:35px;height:35px;border-radius:11px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:0.96rem;line-height:1.1;letter-spacing:-0.015em;">NEET UG 2027</div>
+            <div style="font-size:0.69rem;color:var(--text-secondary);font-weight:500;">Command Center</div>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="themeToggleMobile" type="button">
+          <span id="themeIconMobile">🌙</span> Appearance
+        </button>
+      </div>
+
+      <!-- Mobile Scrollable Capsule Strip -->
+      <div class="mobile-nav-strip" id="mobileNav">
+        <button type="button" class="mobile-tab active" data-tab="overview">Overview</button>
+        <button type="button" class="mobile-tab" data-tab="syllabus">Syllabus (83)</button>
+        <button type="button" class="mobile-tab" data-tab="phases">160-Day Phases</button>
+        <button type="button" class="mobile-tab" data-tab="pomodoro">Timer &amp; Tasks</button>
+        <button type="button" class="mobile-tab" data-tab="mocks">Mocks /720</button>
+        <button type="button" class="mobile-tab" data-tab="backup">Backup</button>
+      </div>
+
+      <!-- Persistent Live Countdown & Dynamic Pace Header -->
+      <header class="command-header">
+        <div class="countdown-box">
+          <div class="target-row">
+            <span class="target-label">NEET Target</span>
+            <input type="date" id="targetDatePicker" class="date-input-inline" aria-label="Target Exam Date" />
+            <button type="button" class="date-preset-btn active" id="presetMay4" title="Target May 4, 2027">May 4</button>
+            <button type="button" class="date-preset-btn" id="presetMay2" title="Target May 2, 2027">May 2</button>
+          </div>
+          <div class="countdown-grid">
+            <div class="cd-unit cd-days">
+              <div class="cd-val" id="cdDays">---</div>
+              <div class="cd-lbl">Days</div>
+            </div>
+            <div class="cd-unit">
+              <div class="cd-val" id="cdHours">--</div>
+              <div class="cd-lbl">Hrs</div>
+            </div>
+            <div class="cd-unit">
+              <div class="cd-val" id="cdMins">--</div>
+              <div class="cd-lbl">Min</div>
+            </div>
+            <div class="cd-unit">
+              <div class="cd-val" id="cdSecs">--</div>
+              <div class="cd-lbl">Sec</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pace-panel">
+          <div class="pace-metric">
+            <span class="pace-metric-lbl">Remaining Chapters</span>
+            <span class="pace-metric-val" id="paceRemChapters">--</span>
+            <span class="pace-metric-sub" id="paceRemLectures">-- lectures left</span>
+          </div>
+          <div class="pace-metric">
+            <span class="pace-metric-lbl">Remaining Lec. Hrs</span>
+            <span class="pace-metric-val" id="paceRemHours">--</span>
+            <span class="pace-metric-sub" id="paceTotalHours">of -- total hrs</span>
+          </div>
+          <div class="pace-metric">
+            <span class="pace-metric-lbl">Req. Pace / Week</span>
+            <span class="pace-metric-val" id="paceChPerWeek">--</span>
+            <span class="pace-metric-sub">chapters / week</span>
+          </div>
+          <div class="pace-metric">
+            <span class="pace-metric-lbl">Req. Daily Pace</span>
+            <span class="pace-metric-val" id="paceDailyHrs">--</span>
+            <span class="pace-metric-sub" id="paceDailySub">lec + rev hrs/day</span>
+          </div>
+          <div class="pace-status-wrap">
+            <span class="status-badge status-on-track" id="paceStatusBadge">ON TRACK</span>
+            <span class="pace-metric-sub" id="paceVarianceText">Syncing schedule...</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main View Content -->
+      <main class="content-area">
+
+        <!-- ==================================================================
+             VIEW 1: OVERVIEW & ANALYTICS
+             ================================================================== -->
+        <section id="view-overview" class="view-section active">
+          <div class="section-head">
+            <div>
+              <h2>Overview &amp; Real-Time Analytics</h2>
+              <p>Live mastery tracking across all 83 NMC Rationalized NEET UG 2027 chapters.</p>
+            </div>
+            <div style="display:flex;gap:9px;flex-wrap:wrap;">
+              <button type="button" class="btn btn-secondary btn-sm" id="btnJumpSyllabus">Open Syllabus Tracker →</button>
+              <button type="button" class="btn btn-primary btn-sm" id="btnJumpTimer">Open Focus &amp; CBT Timer</button>
+            </div>
+          </div>
+
+          <div class="grid-4">
+            <div class="kpi-card" style="--kpi-dot: var(--ios-blue);">
+              <span class="kpi-label">Overall Mastery</span>
+              <span class="kpi-value" id="kpiMastery">0.0%</span>
+              <span class="kpi-sub" id="kpiMasterySub">Weighted 5-stage score</span>
+            </div>
+            <div class="kpi-card" style="--kpi-dot: var(--ios-green);">
+              <span class="kpi-label">Chapters Mastered</span>
+              <span class="kpi-value" id="kpiChapters">0 / 83</span>
+              <span class="kpi-sub" id="kpiLecturesDone">0 lectures watched</span>
+            </div>
+            <div class="kpi-card" style="--kpi-dot: var(--ios-orange);">
+              <span class="kpi-label">Lecture Hours Done</span>
+              <span class="kpi-value" id="kpiHoursDone">0.0h</span>
+              <span class="kpi-sub" id="kpiHoursRem">0.0h remaining</span>
+            </div>
+            <div class="kpi-card" style="--kpi-dot: var(--ios-red);">
+              <span class="kpi-label">Study Streak &amp; Today</span>
+              <span class="kpi-value" id="kpiStreak">1 Day</span>
+              <span class="kpi-sub" id="kpiTodayHrs">0.8h / 10.0h logged today</span>
+            </div>
+          </div>
+
+          <div class="grid-overview-main">
+            <div class="card">
+              <div class="card-title">
+                <span>Syllabus Mastery Gauge</span>
+                <span class="badge badge-neutral" id="gaugeChapterCount">83 Chapters</span>
+              </div>
+              <div class="donut-wrap">
+                <svg class="donut-svg" viewBox="0 0 220 220" role="img" aria-label="Overall Syllabus Mastery Donut Chart">
+                  <defs>
+                    <linearGradient id="masteryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#0A84FF"/>
+                      <stop offset="55%" stop-color="#30D158"/>
+                      <stop offset="100%" stop-color="#FF9F0A"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="110" cy="110" r="88" fill="none" stroke="var(--track-bg)" stroke-width="18" />
+                  <circle id="donutArc" cx="110" cy="110" r="88" fill="none" stroke="url(#masteryGrad)" stroke-width="18"
+                          stroke-linecap="round" transform="rotate(-90 110 110)"
+                          stroke-dasharray="552.92" stroke-dashoffset="552.92" />
+                  <text id="donutPctText" x="110" y="106" text-anchor="middle" fill="var(--text-primary)"
+                        font-family="var(--font-mono)" font-size="34" font-weight="700">0%</text>
+                  <text x="110" y="130" text-anchor="middle" fill="var(--text-secondary)"
+                        font-size="11" font-weight="600" letter-spacing="1.0">WEIGHTED MASTERY</text>
+                </svg>
+                <div class="donut-legend">
+                  <div class="donut-stat">
+                    <div class="donut-stat-val" style="color:var(--ios-green);" id="statCompleted">0</div>
+                    <div class="donut-stat-lbl">100% Mastered</div>
+                  </div>
+                  <div class="donut-stat">
+                    <div class="donut-stat-val" style="color:var(--ios-orange);" id="statInProgress">0</div>
+                    <div class="donut-stat-lbl">In Progress</div>
+                  </div>
+                  <div class="donut-stat">
+                    <div class="donut-stat-val" style="color:var(--text-secondary);" id="statPending">83</div>
+                    <div class="donut-stat-lbl">Not Started</div>
+                  </div>
+                  <div class="donut-stat">
+                    <div class="donut-stat-val" style="color:var(--ios-blue);" id="statHwMastery">0%</div>
+                    <div class="donut-stat-lbl">High-Wt Mastery</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">
+                <span>Subject-Wise Command Progress</span>
+                <span class="card-subtitle">Tap a subject to filter its chapters</span>
+              </div>
+              <div id="subjectProgressList"></div>
+
+              <div style="margin-top:18px;padding-top:16px;border-top:1px solid var(--border);">
+                <div class="card-title" style="margin-bottom:10px;">
+                  <span>Class 11 vs. Class 12 Comparison</span>
+                  <span class="card-subtitle">Foundation vs. Board Core</span>
+                </div>
+                <div class="grid-2" id="classSplitList"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-16">
+            <div class="card-title">
+              <span>5-Stage Chapter Mastery Breakdown</span>
+              <span class="card-subtitle">Weights: Lecture 35% • NCERT 25% • PYQs 20% • Rev 1 10% • Rev 2 10%</span>
+            </div>
+            <div class="stage-grid" id="stageBreakdownGrid"></div>
+          </div>
+
+          <div class="card mt-16">
+            <div class="card-title">
+              <span>Priority High-Weightage Next Up</span>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnFilterHW">View All High-Weightage →</button>
+            </div>
+            <div id="quickHwQueue"></div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW 2: SYLLABUS TRACKER (83 CHAPTERS)
+             ================================================================== -->
+        <section id="view-syllabus" class="view-section">
+          <div class="section-head">
+            <div>
+              <h2>NMC Rationalized Syllabus Tracker</h2>
+              <p>Track One-Shot lectures, NCERT reads, PYQ drills, and dual revisions across all 83 chapters.</p>
+            </div>
+            <button type="button" class="btn btn-primary" id="btnOpenAddChapter">+ Add Custom Chapter</button>
+          </div>
+
+          <div class="filter-toolbar">
+            <div class="filter-row">
+              <div class="search-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="filterSearch" class="input" placeholder="Search chapter name, category, or notes..." />
+              </div>
+
+              <select id="filterClass" class="select filter-select" aria-label="Filter by Class">
+                <option value="ALL">All Classes</option>
+                <option value="11">Class 11</option>
+                <option value="12">Class 12</option>
+              </select>
+
+              <select id="filterPhase" class="select filter-select" aria-label="Filter by Phase">
+                <option value="ALL">All Phases</option>
+                <option value="1">Phase 1 (D1–45)</option>
+                <option value="2">Phase 2 (D46–105)</option>
+                <option value="3">Phase 3 (D106–135)</option>
+                <option value="4">Phase 4 (D136–160)</option>
+              </select>
+
+              <select id="filterStatus" class="select filter-select" aria-label="Filter by Status">
+                <option value="ALL">All Statuses</option>
+                <option value="NOT_STARTED">Not Started (0%)</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="MASTERED">Mastered (100%)</option>
+                <option value="HIGH_WEIGHTAGE">High Weightage</option>
+              </select>
+            </div>
+
+            <div class="filter-row" style="justify-content:space-between;">
+              <div class="subject-pills" id="subjectFilterPills">
+                <button type="button" class="pill-btn active" data-subj="ALL">All (83)</button>
+                <button type="button" class="pill-btn" data-subj="Physics">Physics (29)</button>
+                <button type="button" class="pill-btn" data-subj="Chemistry">Chemistry (22)</button>
+                <button type="button" class="pill-btn" data-subj="Botany">Botany (19)</button>
+                <button type="button" class="pill-btn" data-subj="Zoology">Zoology (13)</button>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnResetFilters">Clear Filters</button>
+            </div>
+
+            <div class="syllabus-summary-bar">
+              <span id="syllabusFilterCount">Showing 83 of 83 chapters</span>
+              <span id="syllabusFilterHours" style="font-family:var(--font-mono);font-weight:600;">Filtered Lec. Hours: --</span>
+            </div>
+          </div>
+
+          <div class="chapter-list" id="chapterListContainer"></div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW 3: 160-DAY 4-PHASE ROADMAP
+             ================================================================== -->
+        <section id="view-phases" class="view-section">
+          <div class="section-head">
+            <div>
+              <h2>160-Day 4-Phase Tactical Roadmap</h2>
+              <p>Structured execution timeline with interactive milestones toward May 4, 2027.</p>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <label for="startDatePicker" class="target-label">Prep Start:</label>
+              <input type="date" id="startDatePicker" class="date-input-inline" />
+            </div>
+          </div>
+
+          <div class="timeline-banner">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+              <div>
+                <strong id="roadmapHeadline">Day 1 of 160</strong>
+                <span style="color:var(--text-secondary);font-size:0.85rem;margin-left:8px;" id="roadmapSpanText"></span>
+              </div>
+              <span class="badge badge-phase" id="roadmapCurrentPhaseBadge">Active: Phase 1</span>
+            </div>
+            <div class="timeline-track">
+              <div class="timeline-elapsed" id="roadmapElapsedBar" style="width: 1%;"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.74rem;color:var(--text-muted);font-family:var(--font-mono);">
+              <span id="tlStartLbl">Nov 25, 2026</span>
+              <span>Phase 1 (D1–45)</span>
+              <span>Phase 2 (D46–105)</span>
+              <span>Phase 3 (D106–135)</span>
+              <span id="tlEndLbl">May 4, 2027</span>
+            </div>
+          </div>
+
+          <div class="grid-2" id="phaseCardsGrid"></div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW 4: POMODORO / CBT TIMER & DAILY PLANNER
+             ================================================================== -->
+        <section id="view-pomodoro" class="view-section">
+          <div class="section-head">
+            <div>
+              <h2>Focus &amp; CBT Timer + Daily Planner</h2>
+              <p>Synthesized Web Audio chimes, automatic study-hour logging, streak heatmap, and priority tasks.</p>
+            </div>
+          </div>
+
+          <div class="timer-layout">
+            <!-- Left: Focus & CBT Timer -->
+            <div class="card">
+              <div class="card-title">
+                <span>Focus &amp; Exam Timer</span>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnToggleFocusBreak">Switch to Break</button>
+                  <button type="button" class="btn btn-sm chime-toggle-btn chime-on" id="btnChimeToggle" aria-pressed="true">🔔 Chime: ON</button>
+                </div>
+              </div>
+
+              <div class="preset-grid" id="timerPresets">
+                <button type="button" class="preset-btn active" data-focus="25" data-break="5" data-label="Pomodoro">
+                  <strong>25 / 5</strong>
+                  <span>Pomodoro</span>
+                </button>
+                <button type="button" class="preset-btn" data-focus="50" data-break="10" data-label="Deep Study">
+                  <strong>50 / 10</strong>
+                  <span>Deep Study</span>
+                </button>
+                <button type="button" class="preset-btn" data-focus="90" data-break="15" data-label="Marathon">
+                  <strong>90 / 15</strong>
+                  <span>Marathon</span>
+                </button>
+                <button type="button" class="preset-btn" data-focus="180" data-break="0" data-label="NEET CBT">
+                  <strong>180 min</strong>
+                  <span>NEET CBT</span>
+                </button>
+              </div>
+
+              <div class="timer-display-box">
+                <div class="timer-ring-wrap" id="timerRingWrap">
+                  <svg class="timer-ring-svg" viewBox="0 0 240 240">
+                    <circle cx="120" cy="120" r="106" fill="none" stroke="var(--track-bg)" stroke-width="11" />
+                    <circle id="timerRingArc" cx="120" cy="120" r="106" fill="none" stroke="var(--ios-blue)" stroke-width="11"
+                            stroke-linecap="round" stroke-dasharray="666.02" stroke-dashoffset="0" />
+                  </svg>
+                  <div class="timer-center">
+                    <div class="timer-clock" id="timerClock">25:00</div>
+                    <div class="timer-mode-lbl" id="timerModeLbl">FOCUS • POMODORO</div>
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+                  <button type="button" class="btn btn-primary" id="btnTimerStart" style="min-width:128px;">▶ Start</button>
+                  <button type="button" class="btn btn-secondary" id="btnTimerReset">↺ Reset</button>
+                  <button type="button" class="btn btn-success" id="btnTimerLogNow" title="Log elapsed focus minutes to today">+ Log Elapsed</button>
+                  <button type="button" class="btn btn-danger" id="btnStopChime" style="display:none;">🔕 Stop Chime</button>
+                </div>
+                <p style="font-size:0.76rem;color:var(--text-muted);text-align:center;">
+                  Tap <strong>Chime: ON / OFF</strong> to toggle completion alerts. Tapping elsewhere on the screen will never change your chime setting or silence an active alarm.
+                </p>
+              </div>
+            </div>
+
+            <!-- Right: Daily Study Target, Streak & Tasks -->
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div class="card">
+                <div class="card-title">
+                  <span>Daily Study Target &amp; Streak</span>
+                  <span class="badge badge-bot" id="plannerStreakBadge">🔥 1 Day Streak</span>
+                </div>
+
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+                  <div>
+                    <div style="font-family:var(--font-mono);font-size:1.6rem;font-weight:700;">
+                      <span id="todayLoggedHrs">0.80</span><span style="font-size:0.95rem;color:var(--text-secondary);"> / <span id="todayTargetDisplay">10</span> hrs</span>
+                    </div>
+                    <div style="font-size:0.76rem;color:var(--text-muted);" id="todayPctMsg">8% of today's target</div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;">
+                    <label for="dailyTargetInput" style="font-size:0.76rem;color:var(--text-secondary);font-weight:600;">Daily Goal (h):</label>
+                    <input type="number" id="dailyTargetInput" class="input" style="width:78px;min-height:40px;padding:6px 8px;text-align:center;font-family:var(--font-mono);font-weight:600;" min="1" max="20" step="0.5" value="10" />
+                  </div>
+                </div>
+
+                <div class="bar-track" style="height:10px;margin-bottom:13px;">
+                  <div class="bar-fill" id="todayStudyBar" style="width:8%;background:linear-gradient(90deg,var(--ios-blue),var(--ios-green));"></div>
+                </div>
+
+                <div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center;" id="quickLogButtons">
+                  <span style="font-size:0.75rem;color:var(--text-secondary);font-weight:600;">Quick Log:</span>
+                  <button type="button" class="btn btn-secondary btn-sm" data-add-mins="15">+15m</button>
+                  <button type="button" class="btn btn-secondary btn-sm" data-add-mins="30">+30m</button>
+                  <button type="button" class="btn btn-secondary btn-sm" data-add-mins="60">+1h</button>
+                  <button type="button" class="btn btn-secondary btn-sm" data-add-mins="120">+2h</button>
+                  <button type="button" class="btn btn-secondary btn-sm" data-add-mins="-15" title="Subtract 15 mins">-15m</button>
+                </div>
+
+                <div style="margin-top:15px;padding-top:13px;border-top:1px solid var(--border);">
+                  <div style="display:flex;justify-content:space-between;font-size:0.74rem;color:var(--text-secondary);font-weight:600;">
+                    <span>Last 14 Days Consistency</span>
+                    <span>Tap/Hover cell for hours</span>
+                  </div>
+                  <div class="heatmap-14" id="studyHeatmap14"></div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-title">
+                  <span>Today's Priority Checklist</span>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnClearDoneTasks">Clear Done</button>
+                </div>
+
+                <form id="taskAddForm" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+                  <input type="text" id="taskInput" class="input" style="flex:1 1 180px;border-radius:var(--radius-pill);" placeholder="e.g., Solve 45 Electrostatics PYQs..." required />
+                  <select id="taskPrio" class="select" style="width:112px;border-radius:var(--radius-pill);">
+                    <option value="High">High</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+
+                <div id="taskListContainer"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW 5: MOCK TEST SCORE LOG (/720)
+             ================================================================== -->
+        <section id="view-mocks" class="view-section">
+          <div class="section-head">
+            <div>
+              <h2>NEET CBT Mock Test Score Log (/720)</h2>
+              <p>Track Physics (/180), Chemistry (/180), and Biology (/360) scores with a live SVG trend chart.</p>
+            </div>
+          </div>
+
+          <div class="grid-4 mb-16">
+            <div class="kpi-card" style="--kpi-dot: var(--ios-blue);">
+              <span class="kpi-label">Mocks Logged</span>
+              <span class="kpi-value" id="mockKpiCount">0</span>
+              <span class="kpi-sub" id="mockKpiDelta">Add your first test below</span>
+            </div>
+            <div class="kpi-card" style="--kpi-dot: var(--ios-green);">
+              <span class="kpi-label">Average Score</span>
+              <span class="kpi-value" id="mockKpiAvg">-- / 720</span>
+              <span class="kpi-sub" id="mockKpiAvgPct">0.0% accuracy avg</span>
+            </div>
+            <div class="kpi-card" style="--kpi-dot: var(--ios-orange);">
+              <span class="kpi-label">Best Score</span>
+              <span class="kpi-value" id="mockKpiBest">-- / 720</span>
+              <span class="kpi-sub" id="mockKpiBestName">Personal high</span>
+            </div>
+            <div class="kpi-card" style="--kpi-dot: var(--ios-red);">
+              <span class="kpi-label">Subject Averages</span>
+              <span class="kpi-value" style="font-size:1.05rem;line-height:1.5;" id="mockKpiSubjAvg">P: -- • C: -- • B: --</span>
+              <span class="kpi-sub">Out of 180 / 180 / 360</span>
+            </div>
+          </div>
+
+          <div class="card mb-16">
+            <div class="card-title">
+              <span>Score Trajectory (/720)</span>
+              <span class="card-subtitle">Dashed benchmarks: 600 &amp; 650+ GMC target zone</span>
+            </div>
+            <div class="chart-box" id="mockChartContainer">
+              <svg id="mockTrendSvg" class="mock-chart-svg" viewBox="0 0 840 265" preserveAspectRatio="xMidYMid meet"></svg>
+              <div class="chart-tooltip" id="mockChartTooltip"></div>
+            </div>
+          </div>
+
+          <div class="card mb-16">
+            <div class="card-title">
+              <span>Log New Mock Test</span>
+              <span class="badge badge-neutral" id="mockLiveTotalBadge">Auto Total: 0 / 720</span>
+            </div>
+            <form id="mockAddForm" class="mock-form-grid">
+              <div class="form-group">
+                <label class="form-label" for="mockDate">Date</label>
+                <input type="date" id="mockDate" class="input" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="mockName">Test Name / Series</label>
+                <input type="text" id="mockName" class="input" placeholder="e.g., Full Syllabus CBT #01" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="mockPhy">Physics (/180)</label>
+                <input type="number" id="mockPhy" class="input" min="-45" max="180" placeholder="0–180" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="mockChem">Chem (/180)</label>
+                <input type="number" id="mockChem" class="input" min="-45" max="180" placeholder="0–180" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="mockBio">Biology (/360)</label>
+                <input type="number" id="mockBio" class="input" min="-90" max="360" placeholder="0–360" required />
+              </div>
+              <button type="submit" class="btn btn-primary">Save Test</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
+              <span>Mock Test History</span>
+              <span class="card-subtitle">Newest tests shown first</span>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Test Name</th>
+                    <th>Physics /180</th>
+                    <th>Chemistry /180</th>
+                    <th>Biology /360</th>
+                    <th>Total /720</th>
+                    <th style="text-align:right;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="mockTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW 6: DATA BACKUP & SETTINGS
+             ================================================================== -->
+        <section id="view-backup" class="view-section">
+          <div class="section-head">
+            <div>
+              <h2>Data Persistence, Backup &amp; Settings</h2>
+              <p>All progress auto-saves locally. Export JSON backups regularly for safe transfers.</p>
+            </div>
+          </div>
+
+          <div class="grid-2 mb-16">
+            <div class="card">
+              <div class="card-title">
+                <span>Export Backup</span>
+                <span class="badge badge-bot" id="storageSizeBadge">LocalStorage Active</span>
+              </div>
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:14px;">
+                Download a complete JSON snapshot of your 83+ chapters, notes, lecture links, study logs, roadmap milestones, tasks, and mock scores.
+              </p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <button type="button" class="btn btn-primary" id="btnExportJson">⬇ Download JSON Backup</button>
+                <button type="button" class="btn btn-secondary" id="btnCopyJson">📋 Copy Backup JSON</button>
+              </div>
+              <p style="font-size:0.75rem;color:var(--text-muted);margin-top:12px;" id="lastSavedText">Last saved: Just now</p>
+            </div>
+
+            <div class="card">
+              <div class="card-title">
+                <span>Restore from Backup</span>
+              </div>
+              <div class="drop-zone" id="importDropZone" role="button" tabindex="0">
+                <p style="font-weight:700;margin-bottom:4px;">Tap to Select or Drop JSON Backup File</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);">Restores syllabus progress, study logs, and mock scores immediately.</p>
+                <input type="file" id="importFileInput" accept=".json,application/json" style="display:none;" />
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="border-color:rgba(255, 69, 58, 0.36);">
+            <div class="card-title">
+              <span style="color:var(--ios-red);">Danger Zone — Reset All Data</span>
+            </div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:14px;">
+              Permanently erase all chapter progress, custom chapters, notes, lecture links, study logs, and mock scores, restoring the fresh 83-chapter NEET UG 2027 template.
+            </p>
+            <button type="button" class="btn btn-danger" id="btnTriggerReset">⚠ Reset All Data</button>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       iOS SHEETS / MODALS (Strictly display:none when inactive)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="chapterModal" role="dialog" aria-modal="true" aria-labelledby="chapterModalTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="chapterModalTitle">Add Custom Chapter</h3>
+        <button type="button" class="modal-close" data-close-modal="chapterModal" aria-label="Close">✕</button>
+      </div>
+      <form id="chapterModalForm" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="form-group">
+          <label class="form-label" for="chNameInput">Chapter Name</label>
+          <input type="text" id="chNameInput" class="input" placeholder="e.g., Rotational Dynamics Extra Drill" required />
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="chSubjInput">Subject</label>
+            <select id="chSubjInput" class="select">
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Botany">Botany</option>
+              <option value="Zoology">Zoology</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="chClassInput">Class</label>
+            <select id="chClassInput" class="select">
+              <option value="11">Class 11</option>
+              <option value="12">Class 12</option>
+              <option value="11/12">Class 11/12</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="chCatInput">Sub-Category</label>
+            <input type="text" id="chCatInput" class="input" placeholder="e.g., Physical, Mechanics, Genetics" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="chPhaseInput">Assigned Phase</label>
+            <select id="chPhaseInput" class="select">
+              <option value="1">Phase 1 (Days 1–45)</option>
+              <option value="2">Phase 2 (Days 46–105)</option>
+              <option value="3">Phase 3 (Days 106–135)</option>
+              <option value="4">Phase 4 (Days 136–160)</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label" for="chHoursInput">One-Shot Duration (hrs)</label>
+            <input type="number" id="chHoursInput" class="input" min="0" max="100" step="0.5" value="4" required />
+          </div>
+          <div class="form-group" style="justify-content:center;">
+            <label class="form-label">Priority Tag</label>
+            <label style="display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;font-size:0.86rem;font-weight:600;">
+              <input type="checkbox" id="chHwInput" style="width:18px;height:18px;accent-color:var(--ios-blue);" />
+              High-Weightage Chapter
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="chUrlInput">One-Shot Lecture URL (Optional)</label>
+          <input type="url" id="chUrlInput" class="input" placeholder="https://youtube.com/watch?v=..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="chNotesInput">Personal Notes (Optional)</label>
+          <textarea id="chNotesInput" class="textarea" placeholder="Key NCERT traps, formulas, weak concepts..."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" data-close-modal="chapterModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Chapter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Double-Confirmation Reset Modal -->
+  <div class="modal-backdrop" id="resetModal" role="dialog" aria-modal="true" aria-labelledby="resetModalTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="resetModalTitle" style="color:var(--ios-red);">Confirm Full Data Reset</h3>
+        <button type="button" class="modal-close" data-close-modal="resetModal" aria-label="Close">✕</button>
+      </div>
+      <div id="resetStep1">
+        <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:12px;">
+          <strong>Step 1 of 2:</strong> Are you sure you want to wipe all your NEET 2027 progress, notes, study streaks, and mock test logs? We recommend downloading a JSON backup first.
+        </p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" data-close-modal="resetModal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="btnResetStep1Next">Continue to Step 2 →</button>
+        </div>
+      </div>
+      <div id="resetStep2" style="display:none;">
+        <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:12px;">
+          <strong>Step 2 of 2 (Final):</strong> Type <code style="color:var(--ios-red);font-weight:700;">RESET</code> below to permanently clear storage and restore the 83-chapter template.
+        </p>
+        <input type="text" id="resetConfirmInput" class="input" placeholder="Type RESET in capitals" autocomplete="off" />
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" data-close-modal="resetModal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="btnResetFinal" disabled style="opacity:0.45;">Permanently Erase All Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generic Confirmation Modal -->
+  <div class="modal-backdrop" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">
+    <div class="modal-card" style="max-width:420px;">
+      <div class="modal-head">
+        <h3 id="confirmModalTitle">Confirm Action</h3>
+        <button type="button" class="modal-close" data-close-modal="confirmModal" aria-label="Close">✕</button>
+      </div>
+      <p id="confirmModalBody" style="font-size:0.88rem;color:var(--text-secondary);"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" data-close-modal="confirmModal">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmModalOk">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <script>
+    /* ==========================================================================
+       NEET UG 2027 PREPARATION COMMAND CENTER — SELF-CONTAINED JS ENGINE
+       Zero global document/window click listeners altering app state.
+       Strict try/catch around localStorage and Web Audio API.
+       ========================================================================== */
+    (function () {
+      'use strict';
+
+      const STORAGE_KEY = 'neet2027_cmd_v2';
+      const LEGACY_KEYS = ['neet_ug_2027_command_center_v2'];
+      const STAGE_WEIGHTS = { lecture: 35, ncert: 25, pyqs: 20, rev1: 10, rev2: 10 };
+      const SUBJECT_META = {
+        Physics:   { color: 'var(--phy)',  grad: 'var(--phy-grad)',  hex: '#0A84FF', badge: 'badge-phy' },
+        Chemistry: { color: 'var(--chem)', grad: 'var(--chem-grad)', hex: '#FF9F0A', badge: 'badge-chem' },
+        Botany:    { color: 'var(--bot)',  grad: 'var(--bot-grad)',  hex: '#30D158', badge: 'badge-bot' },
+        Zoology:   { color: 'var(--zoo)',  grad: 'var(--zoo-grad)',  hex: '#FF453A', badge: 'badge-zoo' }
+      };
+
+      /* ========================================================================
+         COMPLETE 83-CHAPTER NMC RATIONALIZED NEET UG SYLLABUS
+         Physics (29) + Chemistry (22) + Botany (19) + Zoology (13) = 83
+         ======================================================================== */
+      function buildDefaultChapters() {
+        const raw = [
+          // --- PHYSICS (29): Class 11 (14) ---
+          ['phy-01', 'Units and Measurements', 'Physics', '11', 'Mechanics', true, 1, 3.5],
+          ['phy-02', 'Motion in a Straight Line', 'Physics', '11', 'Mechanics', false, 1, 4.5],
+          ['phy-03', 'Motion in a Plane', 'Physics', '11', 'Mechanics', false, 1, 4.5],
+          ['phy-04', 'Laws of Motion', 'Physics', '11', 'Mechanics', true, 1, 6.0],
+          ['phy-05', 'Work, Energy and Power', 'Physics', '11', 'Mechanics', true, 1, 5.5],
+          ['phy-06', 'System of Particles and Rotational Motion', 'Physics', '11', 'Mechanics', true, 1, 8.0],
+          ['phy-07', 'Gravitation', 'Physics', '11', 'Mechanics', true, 1, 4.5],
+          ['phy-08', 'Mechanical Properties of Solids', 'Physics', '11', 'Properties of Matter', false, 1, 3.0],
+          ['phy-09', 'Mechanical Properties of Fluids', 'Physics', '11', 'Properties of Matter', true, 1, 5.5],
+          ['phy-10', 'Thermal Properties of Matter', 'Physics', '11', 'Thermal Physics', false, 1, 4.5],
+          ['phy-11', 'Thermodynamics', 'Physics', '11', 'Thermal Physics', true, 1, 5.5],
+          ['phy-12', 'Kinetic Theory', 'Physics', '11', 'Thermal Physics', false, 1, 3.5],
+          ['phy-13', 'Oscillations', 'Physics', '11', 'SHM & Waves', true, 3, 5.5],
+          ['phy-14', 'Waves', 'Physics', '11', 'SHM & Waves', false, 3, 5.5],
+
+          // --- PHYSICS (29): Class 12 (15) ---
+          ['phy-15', 'Electric Charges and Fields', 'Physics', '12', 'Electrostatics', true, 2, 6.0],
+          ['phy-16', 'Electrostatic Potential and Capacitance', 'Physics', '12', 'Electrostatics', true, 2, 6.5],
+          ['phy-17', 'Current Electricity', 'Physics', '12', 'Electrodynamics', true, 2, 7.0],
+          ['phy-18', 'Moving Charges and Magnetism', 'Physics', '12', 'Magnetism', true, 2, 6.5],
+          ['phy-19', 'Magnetism and Matter', 'Physics', '12', 'Magnetism', false, 4, 3.0],
+          ['phy-20', 'Electromagnetic Induction', 'Physics', '12', 'Electromagnetism', true, 2, 5.0],
+          ['phy-21', 'Alternating Current', 'Physics', '12', 'Electromagnetism', true, 2, 5.0],
+          ['phy-22', 'Electromagnetic Waves', 'Physics', '12', 'Electromagnetism', false, 4, 2.5],
+          ['phy-23', 'Ray Optics and Optical Instruments', 'Physics', '12', 'Optics', true, 2, 8.0],
+          ['phy-24', 'Wave Optics', 'Physics', '12', 'Optics', true, 2, 5.0],
+          ['phy-25', 'Dual Nature of Radiation and Matter', 'Physics', '12', 'Modern Physics', true, 2, 3.5],
+          ['phy-26', 'Atoms', 'Physics', '12', 'Modern Physics', true, 2, 3.5],
+          ['phy-27', 'Nuclei', 'Physics', '12', 'Modern Physics', true, 2, 3.5],
+          ['phy-28', 'Semiconductor Electronics', 'Physics', '12', 'Electronics', true, 2, 5.5],
+          ['phy-29', 'Experimental Skills', 'Physics', '12', 'Practical Physics', false, 3, 3.0],
+
+          // --- CHEMISTRY (22): Physical (8), Inorganic (5), Organic (9) ---
+          ['chem-01', 'Some Basic Concepts of Chemistry', 'Chemistry', '11', 'Physical', true, 1, 5.0],
+          ['chem-02', 'Structure of Atom', 'Chemistry', '11', 'Physical', true, 1, 6.0],
+          ['chem-03', 'Thermodynamics', 'Chemistry', '11', 'Physical', true, 1, 6.5],
+          ['chem-04', 'Equilibrium', 'Chemistry', '11', 'Physical', true, 1, 8.0],
+          ['chem-05', 'Redox Reactions', 'Chemistry', '11', 'Physical', false, 3, 3.0],
+          ['chem-06', 'Solutions', 'Chemistry', '12', 'Physical', true, 2, 5.5],
+          ['chem-07', 'Electrochemistry', 'Chemistry', '12', 'Physical', true, 2, 6.5],
+          ['chem-08', 'Chemical Kinetics', 'Chemistry', '12', 'Physical', true, 2, 5.0],
+          ['chem-09', 'Classification of Elements & Periodicity', 'Chemistry', '11', 'Inorganic', true, 1, 4.0],
+          ['chem-10', 'Chemical Bonding & Molecular Structure', 'Chemistry', '11', 'Inorganic', true, 1, 7.5],
+          ['chem-11', 'p-Block Elements', 'Chemistry', '11/12', 'Inorganic', true, 2, 7.0],
+          ['chem-12', 'd- and f-Block Elements', 'Chemistry', '12', 'Inorganic', true, 2, 4.5],
+          ['chem-13', 'Coordination Compounds', 'Chemistry', '12', 'Inorganic', true, 2, 6.0],
+          ['chem-14', 'Purification & Characterisation of Organic Compounds', 'Chemistry', '11', 'Organic', false, 3, 3.0],
+          ['chem-15', 'Some Basic Principles of Organic Chemistry (GOC)', 'Chemistry', '11', 'Organic', true, 1, 8.0],
+          ['chem-16', 'Hydrocarbons', 'Chemistry', '11', 'Organic', true, 1, 6.5],
+          ['chem-17', 'Haloalkanes and Haloarenes', 'Chemistry', '12', 'Organic', true, 2, 5.5],
+          ['chem-18', 'Alcohols, Phenols and Ethers', 'Chemistry', '12', 'Organic', true, 2, 5.5],
+          ['chem-19', 'Aldehydes, Ketones and Carboxylic Acids', 'Chemistry', '12', 'Organic', true, 2, 7.0],
+          ['chem-20', 'Amines', 'Chemistry', '12', 'Organic', true, 2, 4.5],
+          ['chem-21', 'Biomolecules', 'Chemistry', '12', 'Organic', true, 2, 4.0],
+          ['chem-22', 'Principles Related to Practical Chemistry', 'Chemistry', '12', 'Organic', false, 3, 3.0],
+
+          // --- BOTANY (19): Class 11 (10) & Class 12 (9) ---
+          ['bot-01', 'The Living World', 'Botany', '11', 'Diversity', false, 1, 2.0],
+          ['bot-02', 'Biological Classification', 'Botany', '11', 'Diversity', true, 1, 4.5],
+          ['bot-03', 'Plant Kingdom', 'Botany', '11', 'Diversity', true, 1, 5.0],
+          ['bot-04', 'Morphology of Flowering Plants', 'Botany', '11', 'Plant Structure', true, 1, 5.0],
+          ['bot-05', 'Anatomy of Flowering Plants', 'Botany', '11', 'Plant Structure', true, 1, 4.0],
+          ['bot-06', 'Cell: The Unit of Life', 'Botany', '11', 'Cell Biology', true, 1, 4.5],
+          ['bot-07', 'Cell Cycle and Cell Division', 'Botany', '11', 'Cell Biology', true, 1, 3.5],
+          ['bot-08', 'Photosynthesis in Higher Plants', 'Botany', '11', 'Plant Physiology', true, 1, 5.0],
+          ['bot-09', 'Respiration in Plants', 'Botany', '11', 'Plant Physiology', false, 1, 3.5],
+          ['bot-10', 'Plant Growth and Development', 'Botany', '11', 'Plant Physiology', true, 3, 3.5],
+          ['bot-11', 'Sexual Reproduction in Flowering Plants', 'Botany', '12', 'Reproduction', true, 2, 5.0],
+          ['bot-12', 'Principles of Inheritance and Variation', 'Botany', '12', 'Genetics', true, 2, 6.5],
+          ['bot-13', 'Molecular Basis of Inheritance', 'Botany', '12', 'Genetics', true, 2, 7.0],
+          ['bot-14', 'Microbes in Human Welfare', 'Botany', '12', 'Applied Biology', false, 3, 2.5],
+          ['bot-15', 'Biotechnology: Principles and Processes', 'Botany', '12', 'Biotechnology', true, 2, 4.5],
+          ['bot-16', 'Biotechnology and Its Applications', 'Botany', '12', 'Biotechnology', true, 2, 3.5],
+          ['bot-17', 'Organisms and Populations', 'Botany', '12', 'Ecology', true, 4, 3.5],
+          ['bot-18', 'Ecosystem', 'Botany', '12', 'Ecology', false, 4, 3.0],
+          ['bot-19', 'Biodiversity and Conservation', 'Botany', '12', 'Ecology', true, 4, 2.5],
+
+          // --- ZOOLOGY (13): Class 11 (9) & Class 12 (4) ---
+          ['zoo-01', 'Animal Kingdom', 'Zoology', '11', 'Diversity', true, 1, 6.0],
+          ['zoo-02', 'Structural Organisation in Animals', 'Zoology', '11', 'Tissue & Frog', true, 1, 4.0],
+          ['zoo-03', 'Biomolecules', 'Zoology', '11', 'Cell Biology', true, 1, 5.0],
+          ['zoo-04', 'Breathing and Exchange of Gases', 'Zoology', '11', 'Human Physiology', true, 1, 3.5],
+          ['zoo-05', 'Body Fluids and Circulation', 'Zoology', '11', 'Human Physiology', true, 1, 4.0],
+          ['zoo-06', 'Excretory Products and their Elimination', 'Zoology', '11', 'Human Physiology', false, 1, 3.5],
+          ['zoo-07', 'Locomotion and Movement', 'Zoology', '11', 'Human Physiology', true, 1, 4.0],
+          ['zoo-08', 'Neural Control and Coordination', 'Zoology', '11', 'Human Physiology', false, 1, 4.0],
+          ['zoo-09', 'Chemical Coordination and Integration', 'Zoology', '11', 'Human Physiology', true, 1, 4.5],
+          ['zoo-10', 'Human Reproduction', 'Zoology', '12', 'Reproduction', true, 2, 5.5],
+          ['zoo-11', 'Reproductive Health', 'Zoology', '12', 'Reproduction', true, 2, 3.0],
+          ['zoo-12', 'Evolution', 'Zoology', '12', 'Evolution', true, 2, 4.5],
+          ['zoo-13', 'Human Health and Disease', 'Zoology', '12', 'Health & Immunity', true, 2, 5.5]
+        ];
+
+        return raw.map(([id, name, subject, cls, category, highWeightage, phase, hours]) => ({
+          id,
+          name,
+          subject,
+          cls,
+          category,
+          highWeightage,
+          phase,
+          hours,
+          url: '',
+          notes: '',
+          custom: false,
+          stages: { lecture: false, ncert: false, pyqs: false, rev1: false, rev2: false }
+        }));
+      }
+
+      const PHASE_DEFINITIONS = [
+        {
+          id: 1,
+          title: 'Foundation & Backlog Clearance',
+          dayStart: 1,
+          dayEnd: 45,
+          color: '#0A84FF',
+          grad: 'var(--ios-blue-grad)',
+          milestones: [
+            { id: 'm-1-1', text: 'Finish Class 11 Mechanics, GOC & Chemical Bonding one-shots' },
+            { id: 'm-1-2', text: 'Complete Human & Plant Physiology NCERT diagrams & tables' },
+            { id: 'm-1-3', text: 'Solve 20+ PYQs immediately after every completed chapter' }
+          ]
+        },
+        {
+          id: 2,
+          title: 'Syllabus Completion & NCERT Line-by-Line',
+          dayStart: 46,
+          dayEnd: 105,
+          color: '#30D158',
+          grad: 'var(--ios-green-grad)',
+          milestones: [
+            { id: 'm-2-1', text: 'Complete Class 12 Electrodynamics, Optics & Modern Physics' },
+            { id: 'm-2-2', text: 'Master Organic named reactions, Genetics & Biotechnology' },
+            { id: 'm-2-3', text: 'Finish line-by-line NCERT reading for all 83 chapters' }
+          ]
+        },
+        {
+          id: 3,
+          title: 'High-Yield PYQs & Full-Syllabus Mocks',
+          dayStart: 106,
+          dayEnd: 135,
+          color: '#FF9F0A',
+          grad: 'var(--ios-orange-grad)',
+          milestones: [
+            { id: 'm-3-1', text: 'Complete 15-year PYQ drills & Experimental/Practical skills' },
+            { id: 'm-3-2', text: 'Finish Revision 1 across Physics, Chemistry, Botany & Zoology' },
+            { id: 'm-3-3', text: 'Log at least 8 full-syllabus mocks and review every error' }
+          ]
+        },
+        {
+          id: 4,
+          title: 'Final Rapid Revision & Error Log',
+          dayStart: 136,
+          dayEnd: 160,
+          color: '#FF453A',
+          grad: 'var(--ios-red-grad)',
+          milestones: [
+            { id: 'm-4-1', text: 'Attempt 3-hour CBT mocks strictly in the 2:00 PM – 5:00 PM slot' },
+            { id: 'm-4-2', text: 'Complete Revision 2 & rapid NCERT Ecology/Inorganic recall' },
+            { id: 'm-4-3', text: 'Review personal Error Log & formula sheets before May 4, 2027' }
+          ]
+        }
+      ];
+
+      function createDefaultState() {
+        const todayKey = getLocalDateKey(new Date());
+        return {
+          version: 2,
+          theme: 'dark',
+          targetDate: '2027-05-04',
+          startDate: '2026-11-25',
+          dailyTargetHours: 10,
+          chimeEnabled: true,
+          chapters: buildDefaultChapters(),
+          studyLogs: {
+            [todayKey]: 48 // 0.80 hrs (48 mins) logged today — 1-day streak
+          },
+          milestonesDone: {},
+          tasks: [
+            { id: 't-1', text: 'Complete first high-weightage One-Shot & highlight NCERT traps', prio: 'High', done: false },
+            { id: 't-2', text: 'Solve 30 previous year NEET questions under timed conditions', prio: 'Medium', done: false }
+          ],
+          mockTests: [],
+          lastSaved: new Date().toISOString()
+        };
+      }
+
+      /* ========================================================================
+         SAFE LOCALSTORAGE PERSISTENCE (Key: 'neet2027_cmd_v2')
+         ======================================================================== */
+      let state = loadState();
+      const uiState = {
+        activeTab: 'overview',
+        filters: { search: '', subject: 'ALL', cls: 'ALL', phase: 'ALL', status: 'ALL' },
+        openNoteIds: new Set(),
+        pendingConfirmFn: null
+      };
+
+      function loadState() {
+        try {
+          let saved = localStorage.getItem(STORAGE_KEY);
+          if (!saved) {
+            for (const legacyKey of LEGACY_KEYS) {
+              const legacyVal = localStorage.getItem(legacyKey);
+              if (legacyVal) {
+                saved = legacyVal;
+                break;
+              }
+            }
+          }
+          if (!saved) return createDefaultState();
+          const parsed = JSON.parse(saved);
+          const def = createDefaultState();
+          if (!parsed || !Array.isArray(parsed.chapters) || parsed.chapters.length === 0) {
+            return def;
+          }
+          const logs = parsed.studyLogs && typeof parsed.studyLogs === 'object' ? parsed.studyLogs : {};
+          if (Object.keys(logs).length === 0) {
+            logs[getLocalDateKey(new Date())] = 48;
+          }
+          return {
+            ...def,
+            ...parsed,
+            chimeEnabled: typeof parsed.chimeEnabled === 'boolean' ? parsed.chimeEnabled : true,
+            studyLogs: logs,
+            milestonesDone: parsed.milestonesDone && typeof parsed.milestonesDone === 'object' ? parsed.milestonesDone : {},
+            tasks: Array.isArray(parsed.tasks) ? parsed.tasks : [],
+            mockTests: Array.isArray(parsed.mockTests) ? parsed.mockTests : []
+          };
+        } catch (err) {
+          console.warn('LocalStorage read blocked/unavailable:', err);
+          return createDefaultState();
+        }
+      }
+
+      function saveState() {
+        state.lastSaved = new Date().toISOString();
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        } catch (err) {
+          console.warn('LocalStorage write blocked/unavailable:', err);
+        }
+        updateStorageMeta();
+      }
+
+      /* ========================================================================
+         HELPERS
+         ======================================================================== */
+      function escapeHtml(str) {
+        return String(str == null ? '' : str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function sanitizeUrl(url) {
+        const trimmed = (url || '').trim();
+        if (!trimmed) return '';
+        if (/^javascript:/i.test(trimmed) || /^data:/i.test(trimmed)) return '';
+        if (!/^https?:\/\//i.test(trimmed)) return 'https://' + trimmed;
+        return trimmed;
+      }
+
+      function getLocalDateKey(dateObj) {
+        const d = dateObj || new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      }
+
+      function parseYmd(ymd) {
+        const [y, m, d] = (ymd || '2027-05-04').split('-').map(Number);
+        return new Date(y, (m || 1) - 1, d || 1, 14, 0, 0);
+      }
+
+      function formatShortDate(dateObj) {
+        return dateObj.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+      }
+
+      function addDays(ymd, offsetDays) {
+        const [y, m, d] = ymd.split('-').map(Number);
+        const dt = new Date(y, m - 1, d);
+        dt.setDate(dt.getDate() + offsetDays);
+        return dt;
+      }
+
+      function getChapterProgress(ch) {
+        let pct = 0;
+        if (ch.stages.lecture) pct += STAGE_WEIGHTS.lecture;
+        if (ch.stages.ncert)   pct += STAGE_WEIGHTS.ncert;
+        if (ch.stages.pyqs)    pct += STAGE_WEIGHTS.pyqs;
+        if (ch.stages.rev1)    pct += STAGE_WEIGHTS.rev1;
+        if (ch.stages.rev2)    pct += STAGE_WEIGHTS.rev2;
+        return pct;
+      }
+
+      function showToast(message, type) {
+        try {
+          const stack = document.getElementById('toastStack');
+          if (!stack) return;
+          const el = document.createElement('div');
+          el.className = `toast toast-${type || 'info'}`;
+          el.textContent = message;
+          stack.appendChild(el);
+          setTimeout(() => {
+            if (el.parentNode) el.parentNode.removeChild(el);
+          }, 2800);
+        } catch (_) {}
+      }
+
+      /* ========================================================================
+         WEB AUDIO API CHIME ENGINE (EXPLICIT BUTTON CONTROL ONLY)
+         - NEVER attaches global document/window click listeners.
+         - Only explicit clicks on #btnChimeToggle or #btnStopChime change state.
+         ======================================================================== */
+      let audioCtx = null;
+      let alarmRepeatInterval = null;
+      let alarmRinging = false;
+
+      function unlockAudio() {
+        try {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return null;
+          if (!audioCtx) {
+            audioCtx = new AudioContextClass();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume().catch(() => {});
+          }
+          return audioCtx;
+        } catch (err) {
+          console.warn('Web Audio API unavailable:', err);
+          return null;
+        }
+      }
+
+      function playThreeNoteChime() {
+        try {
+          const ctx = unlockAudio();
+          if (!ctx) return;
+          const startNotes = () => {
+            try {
+              const now = ctx.currentTime + 0.02;
+              const notes = [523.25, 659.25, 783.99]; // C5 - E5 - G5
+              notes.forEach((freq, idx) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now + idx * 0.16);
+
+                gain.gain.setValueAtTime(0.0001, now + idx * 0.16);
+                gain.gain.linearRampToValueAtTime(0.26, now + idx * 0.16 + 0.03);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.16 + 0.75);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now + idx * 0.16);
+                osc.stop(now + idx * 0.16 + 0.8);
+              });
+            } catch (_) {}
+          };
+
+          if (ctx.state === 'suspended') {
+            ctx.resume().then(startNotes).catch(() => {});
+          } else {
+            startNotes();
+          }
+        } catch (err) {
+          console.warn('Chime playback skipped:', err);
+        }
+      }
+
+      function startAlarmChime() {
+        stopAlarmChime();
+        if (!state.chimeEnabled) return;
+        alarmRinging = true;
+        playThreeNoteChime();
+        const stopBtn = document.getElementById('btnStopChime');
+        if (stopBtn) stopBtn.style.display = 'inline-flex';
+        alarmRepeatInterval = setInterval(() => {
+          if (alarmRinging && state.chimeEnabled) {
+            playThreeNoteChime();
+          } else {
+            stopAlarmChime();
+          }
+        }, 2800);
+      }
+
+      function stopAlarmChime() {
+        alarmRinging = false;
+        if (alarmRepeatInterval) {
+          clearInterval(alarmRepeatInterval);
+          alarmRepeatInterval = null;
+        }
+        const stopBtn = document.getElementById('btnStopChime');
+        if (stopBtn) stopBtn.style.display = 'none';
+      }
+
+      function updateChimeButtonUI() {
+        const btn = document.getElementById('btnChimeToggle');
+        if (!btn) return;
+        if (state.chimeEnabled) {
+          btn.textContent = '🔔 Chime: ON';
+          btn.setAttribute('aria-pressed', 'true');
+          btn.classList.add('chime-on');
+          btn.classList.remove('chime-off');
+        } else {
+          btn.textContent = '🔕 Chime: OFF';
+          btn.setAttribute('aria-pressed', 'false');
+          btn.classList.add('chime-off');
+          btn.classList.remove('chime-on');
+        }
+      }
+
+      /* ========================================================================
+         THEME & NAVIGATION
+         ======================================================================== */
+      function applyTheme(theme) {
+        state.theme = theme === 'light' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', state.theme);
+        const isDark = state.theme === 'dark';
+        document.getElementById('themeLabelSidebar').textContent = isDark ? 'Dark Appearance' : 'Light Appearance';
+        document.getElementById('themeIconSidebar').textContent = isDark ? '🌙' : '☀️';
+        document.getElementById('themeIconMobile').textContent = isDark ? '🌙' : '☀️';
+        saveState();
+      }
+
+      function switchTab(tabId) {
+        uiState.activeTab = tabId;
+        document.querySelectorAll('.nav-btn').forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.tab === tabId);
+        });
+        document.querySelectorAll('.mobile-tab').forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.tab === tabId);
+        });
+        document.querySelectorAll('.view-section').forEach((sec) => {
+          sec.classList.toggle('active', sec.id === 'view-' + tabId);
+        });
+        if (tabId === 'mocks') renderMockChart();
+      }
+
+      /* ========================================================================
+         COUNTDOWN & DYNAMIC PACE ENGINE
+         ======================================================================== */
+      function updateCountdownAndPace() {
+        const now = new Date();
+        const target = parseYmd(state.targetDate);
+        const diffMs = target.getTime() - now.getTime();
+
+        const totalSec = Math.max(0, Math.floor(diffMs / 1000));
+        const days = Math.floor(totalSec / 86400);
+        const hours = Math.floor((totalSec % 86400) / 3600);
+        const mins = Math.floor((totalSec % 3600) / 60);
+        const secs = totalSec % 60;
+
+        document.getElementById('cdDays').textContent = String(days);
+        document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cdMins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('cdSecs').textContent = String(secs).padStart(2, '0');
+
+        const totalCh = state.chapters.length;
+        let masteredCh = 0;
+        let lecturesLeft = 0;
+        let totalLecHours = 0;
+        let remLecHours = 0;
+        let weightedSum = 0;
+
+        state.chapters.forEach((ch) => {
+          const prog = getChapterProgress(ch);
+          weightedSum += prog;
+          if (prog === 100) masteredCh++;
+          totalLecHours += Number(ch.hours) || 0;
+          if (!ch.stages.lecture) {
+            lecturesLeft++;
+            remLecHours += Number(ch.hours) || 0;
+          }
+        });
+
+        const remCh = totalCh - masteredCh;
+        const effectiveDays = Math.max(1, days + hours / 24);
+        const effectiveWeeks = Math.max(1 / 7, effectiveDays / 7);
+
+        const chPerWeek = remCh / effectiveWeeks;
+        const dailyLecHrs = remLecHours / effectiveDays;
+        const dailyRevDrillHrs = (remCh * 2.2) / effectiveDays;
+        const reqDailyTotal = dailyLecHrs + dailyRevDrillHrs;
+
+        document.getElementById('paceRemChapters').textContent = `${remCh} / ${totalCh}`;
+        document.getElementById('paceRemLectures').textContent = `${lecturesLeft} one-shots left`;
+        document.getElementById('paceRemHours').textContent = `${remLecHours.toFixed(1)}h`;
+        document.getElementById('paceTotalHours').textContent = `of ${totalLecHours.toFixed(1)}h total`;
+        document.getElementById('paceChPerWeek').textContent = chPerWeek.toFixed(1);
+        document.getElementById('paceDailyHrs').textContent = `${reqDailyTotal.toFixed(1)}h/d`;
+        document.getElementById('paceDailySub').textContent = `${dailyLecHrs.toFixed(1)}h lec + ${dailyRevDrillHrs.toFixed(1)}h rev`;
+
+        const start = parseYmd(state.startDate);
+        const totalSpanMs = Math.max(86400000, target.getTime() - start.getTime());
+        const elapsedRatio = Math.min(1, Math.max(0, (now.getTime() - start.getTime()) / totalSpanMs));
+        const actualMasteryRatio = totalCh > 0 ? weightedSum / (totalCh * 100) : 0;
+        const deltaPct = (actualMasteryRatio - elapsedRatio) * 100;
+
+        const badge = document.getElementById('paceStatusBadge');
+        const varText = document.getElementById('paceVarianceText');
+        badge.className = 'status-badge';
+
+        if (deltaPct >= 4) {
+          badge.classList.add('status-ahead');
+          badge.textContent = 'AHEAD OF PACE';
+          varText.textContent = `+${deltaPct.toFixed(1)}% ahead of schedule`;
+        } else if (deltaPct >= -6) {
+          badge.classList.add('status-on-track');
+          badge.textContent = 'ON TRACK';
+          varText.textContent = `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(1)}% vs. timeline`;
+        } else {
+          badge.classList.add('status-behind');
+          badge.textContent = 'BEHIND PACE';
+          varText.textContent = `${Math.abs(deltaPct).toFixed(1)}% behind target`;
+        }
+      }
+
+      /* ========================================================================
+         VIEW 1: OVERVIEW & ANALYTICS RENDERER
+         ======================================================================== */
+      function renderOverview() {
+        const chapters = state.chapters;
+        const total = chapters.length || 1;
+
+        let weightedSum = 0;
+        let mastered = 0;
+        let inProg = 0;
+        let pending = 0;
+        let lecDone = 0;
+        let hrsDone = 0;
+        let hrsRem = 0;
+        let hwTotal = 0;
+        let hwWeighted = 0;
+
+        const stageCounts = { lecture: 0, ncert: 0, pyqs: 0, rev1: 0, rev2: 0 };
+        const subjStats = {
+          Physics:   { total: 0, weighted: 0, mastered: 0, hrsDone: 0, hrsTotal: 0 },
+          Chemistry: { total: 0, weighted: 0, mastered: 0, hrsDone: 0, hrsTotal: 0 },
+          Botany:    { total: 0, weighted: 0, mastered: 0, hrsDone: 0, hrsTotal: 0 },
+          Zoology:   { total: 0, weighted: 0, mastered: 0, hrsDone: 0, hrsTotal: 0 }
+        };
+        const classStats = {
+          '11': { total: 0, weighted: 0, mastered: 0 },
+          '12': { total: 0, weighted: 0, mastered: 0 }
+        };
+
+        chapters.forEach((ch) => {
+          const p = getChapterProgress(ch);
+          const h = Number(ch.hours) || 0;
+          weightedSum += p;
+          if (p === 100) mastered++;
+          else if (p > 0) inProg++;
+          else pending++;
+
+          if (ch.stages.lecture) { lecDone++; hrsDone += h; stageCounts.lecture++; }
+          else { hrsRem += h; }
+          if (ch.stages.ncert) stageCounts.ncert++;
+          if (ch.stages.pyqs)  stageCounts.pyqs++;
+          if (ch.stages.rev1)  stageCounts.rev1++;
+          if (ch.stages.rev2)  stageCounts.rev2++;
+
+          if (ch.highWeightage) {
+            hwTotal++;
+            hwWeighted += p;
+          }
+
+          if (subjStats[ch.subject]) {
+            subjStats[ch.subject].total++;
+            subjStats[ch.subject].weighted += p;
+            subjStats[ch.subject].hrsTotal += h;
+            if (ch.stages.lecture) subjStats[ch.subject].hrsDone += h;
+            if (p === 100) subjStats[ch.subject].mastered++;
+          }
+
+          const cKey = String(ch.cls).includes('12') && !String(ch.cls).includes('11') ? '12' : '11';
+          classStats[cKey].total++;
+          classStats[cKey].weighted += p;
+          if (p === 100) classStats[cKey].mastered++;
+        });
+
+        const overallPct = weightedSum / total;
+        const hwPct = hwTotal > 0 ? hwWeighted / hwTotal : 0;
+
+        document.getElementById('kpiMastery').textContent = `${overallPct.toFixed(1)}%`;
+        document.getElementById('kpiChapters').textContent = `${mastered} / ${chapters.length}`;
+        document.getElementById('kpiLecturesDone').textContent = `${lecDone} / ${chapters.length} one-shots watched`;
+        document.getElementById('kpiHoursDone').textContent = `${hrsDone.toFixed(1)}h`;
+        document.getElementById('kpiHoursRem').textContent = `${hrsRem.toFixed(1)}h remaining`;
+
+        const streak = calculateStudyStreak();
+        const todayMins = state.studyLogs[getLocalDateKey(new Date())] || 0;
+        const todayHrs = todayMins / 60;
+        document.getElementById('kpiStreak').textContent = `${streak} Day${streak === 1 ? '' : 's'}`;
+        document.getElementById('kpiTodayHrs').textContent = `${todayHrs.toFixed(1)}h / ${state.dailyTargetHours}h logged today`;
+
+        const circumference = 2 * Math.PI * 88;
+        const offset = circumference * (1 - overallPct / 100);
+        document.getElementById('donutArc').setAttribute('stroke-dashoffset', offset.toFixed(2));
+        document.getElementById('donutPctText').textContent = `${Math.round(overallPct)}%`;
+        document.getElementById('gaugeChapterCount').textContent = `${chapters.length} Chapters`;
+        document.getElementById('statCompleted').textContent = mastered;
+        document.getElementById('statInProgress').textContent = inProg;
+        document.getElementById('statPending').textContent = pending;
+        document.getElementById('statHwMastery').textContent = `${Math.round(hwPct)}%`;
+
+        const subjHtml = Object.keys(subjStats).map((subj) => {
+          const s = subjStats[subj];
+          const pct = s.total ? (s.weighted / s.total) : 0;
+          const meta = SUBJECT_META[subj];
+          return `
+            <div class="subject-row" data-jump-subject="${subj}" role="button" tabindex="0">
+              <div class="subject-row-top">
+                <span class="subject-name">
+                  <span class="subject-dot" style="background:${meta.color};"></span>
+                  ${subj}
+                </span>
+                <span class="subject-meta">${s.mastered}/${s.total} mastered • ${s.hrsDone.toFixed(1)}/${s.hrsTotal.toFixed(1)}h • <strong>${pct.toFixed(1)}%</strong></span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${meta.grad};"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+        document.getElementById('subjectProgressList').innerHTML = subjHtml;
+
+        const classHtml = ['11', '12'].map((c) => {
+          const cs = classStats[c];
+          const pct = cs.total ? (cs.weighted / cs.total) : 0;
+          const grad = c === '11' ? 'var(--ios-blue-grad)' : 'var(--ios-green-grad)';
+          return `
+            <div style="background:var(--glass-surface-2);border:1px solid var(--border);box-shadow:var(--specular-soft);border-radius:16px;padding:13px;">
+              <div style="display:flex;justify-content:space-between;font-size:0.83rem;font-weight:600;margin-bottom:7px;">
+                <span>Class ${c}</span>
+                <span style="font-family:var(--font-mono);">${cs.mastered}/${cs.total} (${pct.toFixed(0)}%)</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${grad};"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+        document.getElementById('classSplitList').innerHTML = classHtml;
+
+        const stageDefs = [
+          { key: 'lecture', label: 'Lecture (35%)', color: 'var(--ios-blue)',   grad: 'var(--ios-blue-grad)' },
+          { key: 'ncert',   label: 'NCERT (25%)',   color: 'var(--ios-green)',  grad: 'var(--ios-green-grad)' },
+          { key: 'pyqs',    label: 'PYQs (20%)',    color: 'var(--ios-orange)', grad: 'var(--ios-orange-grad)' },
+          { key: 'rev1',    label: 'Rev 1 (10%)',   color: 'var(--ios-purple)', grad: 'var(--ios-purple-grad)' },
+          { key: 'rev2',    label: 'Rev 2 (10%)',   color: 'var(--ios-red)',    grad: 'var(--ios-red-grad)' }
+        ];
+        document.getElementById('stageBreakdownGrid').innerHTML = stageDefs.map((st) => {
+          const cnt = stageCounts[st.key];
+          const pct = (cnt / total) * 100;
+          return `
+            <div class="stage-card">
+              <div class="stage-card-head">
+                <span>${st.label}</span>
+                <span>${Math.round(pct)}%</span>
+              </div>
+              <div class="stage-card-num" style="color:${st.color};">${cnt}<span style="font-size:0.82rem;color:var(--text-muted);">/${chapters.length}</span></div>
+              <div class="bar-track" style="height:6px;">
+                <div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${st.grad};"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        const nextHw = chapters
+          .filter((c) => c.highWeightage && getChapterProgress(c) < 100)
+          .slice(0, 5);
+
+        if (nextHw.length === 0) {
+          document.getElementById('quickHwQueue').innerHTML = `<p style="font-size:0.86rem;color:var(--ios-green);font-weight:600;">All High-Weightage chapters are 100% mastered!</p>`;
+        } else {
+          document.getElementById('quickHwQueue').innerHTML = nextHw.map((ch) => {
+            const pct = getChapterProgress(ch);
+            const meta = SUBJECT_META[ch.subject] || SUBJECT_META.Physics;
+            return `
+              <div class="quick-hw-item">
+                <div style="min-width:0;">
+                  <div style="font-weight:700;font-size:0.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(ch.name)}</div>
+                  <div style="display:flex;gap:6px;margin-top:4px;flex-wrap:wrap;">
+                    <span class="badge ${meta.badge}">${escapeHtml(ch.subject)}</span>
+                    <span class="badge badge-neutral">Class ${escapeHtml(ch.cls)}</span>
+                    <span class="badge badge-neutral">${ch.hours}h</span>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <span style="font-family:var(--font-mono);font-size:0.82rem;font-weight:700;">${pct}%</span>
+                  <button type="button" class="btn btn-secondary btn-sm" data-quick-lec="${escapeHtml(ch.id)}">
+                    ${ch.stages.lecture ? '✓ Lec Done' : '+ Mark Lec'}
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      /* ========================================================================
+         VIEW 2: SYLLABUS TRACKER RENDERER
+         ======================================================================== */
+      function renderSyllabus() {
+        const f = uiState.filters;
+        const query = f.search.trim().toLowerCase();
+
+        const filtered = state.chapters.filter((ch) => {
+          if (f.subject !== 'ALL' && ch.subject !== f.subject) return false;
+          if (f.cls !== 'ALL' && !String(ch.cls).includes(f.cls)) return false;
+          if (f.phase !== 'ALL' && String(ch.phase || 1) !== String(f.phase)) return false;
+          const pct = getChapterProgress(ch);
+          if (f.status === 'NOT_STARTED' && pct !== 0) return false;
+          if (f.status === 'IN_PROGRESS' && (pct === 0 || pct === 100)) return false;
+          if (f.status === 'MASTERED' && pct !== 100) return false;
+          if (f.status === 'HIGH_WEIGHTAGE' && !ch.highWeightage) return false;
+          if (query) {
+            const hay = `${ch.name} ${ch.subject} ${ch.category} ${ch.notes}`.toLowerCase();
+            if (!hay.includes(query)) return false;
+          }
+          return true;
+        });
+
+        let filteredHrs = 0;
+        let filteredRemHrs = 0;
+        filtered.forEach((c) => {
+          const h = Number(c.hours) || 0;
+          filteredHrs += h;
+          if (!c.stages.lecture) filteredRemHrs += h;
+        });
+
+        document.getElementById('syllabusFilterCount').textContent = `Showing ${filtered.length} of ${state.chapters.length} chapters`;
+        document.getElementById('syllabusFilterHours').textContent = `Filtered Lec. Hours: ${filteredRemHrs.toFixed(1)}h left / ${filteredHrs.toFixed(1)}h total`;
+
+        const counts = { ALL: state.chapters.length, Physics: 0, Chemistry: 0, Botany: 0, Zoology: 0 };
+        state.chapters.forEach((c) => { if (counts[c.subject] !== undefined) counts[c.subject]++; });
+        document.querySelectorAll('#subjectFilterPills .pill-btn').forEach((btn) => {
+          const s = btn.dataset.subj;
+          btn.classList.toggle('active', s === f.subject);
+          btn.textContent = s === 'ALL' ? `All (${counts.ALL})` : `${s} (${counts[s]})`;
+        });
+
+        const container = document.getElementById('chapterListContainer');
+        if (filtered.length === 0) {
+          container.innerHTML = `
+            <div class="card" style="text-align:center;padding:34px 16px;">
+              <p style="font-weight:700;margin-bottom:6px;">No chapters match your active filters.</p>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">Try clearing search keywords or switching subject/status tabs.</p>
+            </div>
+          `;
+          return;
+        }
+
+        const stageMeta = [
+          { key: 'lecture', label: 'Lecture', wt: '35%' },
+          { key: 'ncert',   label: 'NCERT',   wt: '25%' },
+          { key: 'pyqs',    label: 'PYQs',    wt: '20%' },
+          { key: 'rev1',    label: 'Rev 1',   wt: '10%' },
+          { key: 'rev2',    label: 'Rev 2',   wt: '10%' }
+        ];
+
+        container.innerHTML = filtered.map((ch) => {
+          const pct = getChapterProgress(ch);
+          const meta = SUBJECT_META[ch.subject] || SUBJECT_META.Physics;
+          const isOpen = uiState.openNoteIds.has(ch.id);
+          const safeHref = sanitizeUrl(ch.url);
+          const hasNoteOrUrl = Boolean((ch.notes && ch.notes.trim()) || safeHref);
+
+          const chipsHtml = stageMeta.map((st) => {
+            const checked = Boolean(ch.stages[st.key]);
+            return `
+              <button type="button" class="stage-chip ${checked ? 'checked' : ''}"
+                      data-action="toggle-stage" data-id="${escapeHtml(ch.id)}" data-stage="${st.key}"
+                      aria-pressed="${checked}">
+                <span class="chk-box">${checked ? '✓' : ''}</span>
+                <span>${st.label} <small style="opacity:0.75;">(${st.wt})</small></span>
+              </button>
+            `;
+          }).join('');
+
+          return `
+            <article class="chapter-card ${pct === 100 ? 'is-complete' : ''}" style="--subj-accent:${meta.color};">
+              <div class="chapter-top">
+                <div class="chapter-info">
+                  <div class="chapter-title-row">
+                    <span class="chapter-title">${escapeHtml(ch.name)}</span>
+                  </div>
+                  <div class="chapter-badges">
+                    <span class="badge ${meta.badge}">${escapeHtml(ch.subject)}</span>
+                    <span class="badge badge-neutral">Class ${escapeHtml(ch.cls)}</span>
+                    <span class="badge badge-phase">Phase ${escapeHtml(ch.phase || 1)}</span>
+                    ${ch.category ? `<span class="badge badge-neutral">${escapeHtml(ch.category)}</span>` : ''}
+                    ${ch.highWeightage ? `<span class="badge badge-hw">★ High Weightage</span>` : ''}
+                    ${ch.custom ? `<span class="badge badge-phase">Custom</span>` : ''}
+                  </div>
+                </div>
+
+                <div class="chapter-controls">
+                  <label class="hrs-edit-wrap" title="Edit One-Shot Lecture Duration (hours)">
+                    <input type="number" class="hrs-input" min="0" max="100" step="0.5"
+                           value="${ch.hours}" data-action="edit-hours" data-id="${escapeHtml(ch.id)}"
+                           aria-label="Lecture hours for ${escapeHtml(ch.name)}" />
+                    <span class="hrs-unit">hrs</span>
+                  </label>
+
+                  ${safeHref ? `<a href="${escapeHtml(safeHref)}" target="_blank" rel="noopener noreferrer" class="icon-action-btn has-data">▶ Watch</a>` : ''}
+
+                  <button type="button" class="icon-action-btn ${hasNoteOrUrl ? 'has-data' : ''}"
+                          data-action="toggle-drawer" data-id="${escapeHtml(ch.id)}">
+                    📝 ${isOpen ? 'Hide' : 'Notes / Link'}
+                  </button>
+
+                  ${ch.custom ? `<button type="button" class="icon-action-btn" style="color:var(--ios-red);" data-action="delete-chapter" data-id="${escapeHtml(ch.id)}" title="Delete custom chapter">🗑</button>` : ''}
+                </div>
+              </div>
+
+              <div class="chapter-bottom">
+                <div class="stage-toggles">${chipsHtml}</div>
+                <div class="chapter-progress-wrap">
+                  <div class="bar-track" style="height:8px;">
+                    <div class="bar-fill" style="width:${pct}%;background:${pct === 100 ? 'var(--ios-green-grad)' : meta.grad};"></div>
+                  </div>
+                  <span class="chapter-pct" style="color:${pct === 100 ? 'var(--ios-green)' : 'var(--text-primary)'};">${pct}%</span>
+                </div>
+              </div>
+
+              ${isOpen ? `
+                <div class="chapter-note-drawer">
+                  <div class="form-group">
+                    <label class="form-label">One-Shot Video URL</label>
+                    <input type="url" class="input" style="min-height:38px;" placeholder="https://youtube.com/..."
+                           value="${escapeHtml(ch.url)}" data-action="edit-url" data-id="${escapeHtml(ch.id)}" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Personal Chapter Notes &amp; NCERT Traps</label>
+                    <textarea class="textarea" style="min-height:66px;" placeholder="Write formulas, NCERT page traps, or revision reminders..."
+                              data-action="edit-notes" data-id="${escapeHtml(ch.id)}">${escapeHtml(ch.notes)}</textarea>
+                  </div>
+                </div>
+              ` : ''}
+            </article>
+          `;
+        }).join('');
+      }
+
+      /* ========================================================================
+         VIEW 3: 160-DAY 4-PHASE ROADMAP RENDERER
+         ======================================================================== */
+      function renderRoadmap() {
+        const start = parseYmd(state.startDate);
+        const end = parseYmd(state.targetDate);
+        const now = new Date();
+
+        const totalDays = Math.max(1, Math.round((end.getTime() - start.getTime()) / 86400000));
+        const elapsedDays = Math.min(totalDays, Math.max(1, Math.floor((now.getTime() - start.getTime()) / 86400000) + 1));
+        const pctElapsed = Math.min(100, Math.max(0, (elapsedDays / totalDays) * 100));
+
+        let currentPhaseId = 1;
+        if (elapsedDays > 135) currentPhaseId = 4;
+        else if (elapsedDays > 105) currentPhaseId = 3;
+        else if (elapsedDays > 45) currentPhaseId = 2;
+
+        document.getElementById('roadmapHeadline').textContent = `Day ${elapsedDays} of ${totalDays}`;
+        document.getElementById('roadmapSpanText').textContent = `${formatShortDate(start)} → ${formatShortDate(end)}`;
+        document.getElementById('roadmapCurrentPhaseBadge').textContent = `Active Window: Phase ${currentPhaseId}`;
+        document.getElementById('roadmapElapsedBar').style.width = `${pctElapsed.toFixed(1)}%`;
+        document.getElementById('tlStartLbl').textContent = formatShortDate(start);
+        document.getElementById('tlEndLbl').textContent = formatShortDate(end);
+
+        document.getElementById('phaseCardsGrid').innerHTML = PHASE_DEFINITIONS.map((ph) => {
+          const chs = state.chapters.filter((c) => Number(c.phase) === ph.id);
+          let wSum = 0;
+          let done = 0;
+          let hrs = 0;
+          chs.forEach((c) => {
+            const p = getChapterProgress(c);
+            wSum += p;
+            if (p === 100) done++;
+            hrs += Number(c.hours) || 0;
+          });
+          const mastery = chs.length ? (wSum / chs.length) : 0;
+          const dStart = formatShortDate(addDays(state.startDate, ph.dayStart - 1));
+          const dEnd = formatShortDate(addDays(state.startDate, ph.dayEnd - 1));
+          const isCurr = ph.id === currentPhaseId;
+
+          const milestonesHtml = ph.milestones.map((ms) => {
+            const checked = Boolean(state.milestonesDone[ms.id]);
+            return `
+              <button type="button" class="milestone-item ${checked ? 'done' : ''}" data-milestone-id="${ms.id}" aria-pressed="${checked}">
+                <span class="milestone-box">${checked ? '✓' : ''}</span>
+                <span>${escapeHtml(ms.text)}</span>
+              </button>
+            `;
+          }).join('');
+
+          return `
+            <article class="phase-card ${isCurr ? 'is-current' : ''}" data-open-phase="${ph.id}" style="border-top:4px solid ${ph.color};" role="button" tabindex="0" aria-label="Open Phase ${ph.id} chapters in Syllabus Tracker">
+              <div class="phase-header">
+                <div>
+                  <span class="phase-tag" style="color:${ph.color};">Phase ${ph.id} • Days ${ph.dayStart}–${ph.dayEnd}</span>
+                  <h3 style="font-size:1.08rem;font-weight:700;margin-top:8px;">${escapeHtml(ph.title)}</h3>
+                </div>
+                <div style="text-align:right;">
+                  <div class="phase-dates">${dStart} – ${dEnd}</div>
+                  <div style="display:flex;gap:6px;justify-content:flex-end;align-items:center;margin-top:6px;flex-wrap:wrap;">
+                    ${isCurr ? `<span class="badge badge-phase">Current Phase</span>` : ''}
+                    <span class="badge badge-neutral" style="color:${ph.color};border-color:${ph.color}55;">View Chapters →</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;font-weight:600;margin-bottom:6px;">
+                  <span>Phase Syllabus Mastery</span>
+                  <span style="font-family:var(--font-mono);color:${ph.color};">${mastery.toFixed(1)}%</span>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:${mastery.toFixed(1)}%;background:${ph.grad};"></div>
+                </div>
+              </div>
+
+              <div class="phase-stats">
+                <div class="phase-stat-box">
+                  <div class="phase-stat-num">${done}/${chs.length}</div>
+                  <div class="phase-stat-lbl">Chapters Done</div>
+                </div>
+                <div class="phase-stat-box">
+                  <div class="phase-stat-num">${hrs.toFixed(0)}h</div>
+                  <div class="phase-stat-lbl">Lecture Load</div>
+                </div>
+                <div class="phase-stat-box">
+                  <div class="phase-stat-num">${ph.dayEnd - ph.dayStart + 1}d</div>
+                  <div class="phase-stat-lbl">Phase Window</div>
+                </div>
+              </div>
+
+              <div class="milestone-list">${milestonesHtml}</div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      /* ========================================================================
+         VIEW 4: POMODORO / CBT TIMER, STREAK & DAILY PLANNER
+         ======================================================================== */
+      const timerState = {
+        focusMins: 25,
+        breakMins: 5,
+        label: 'Pomodoro',
+        mode: 'FOCUS',
+        remainingSec: 25 * 60,
+        totalSec: 25 * 60,
+        running: false,
+        endTimestamp: null,
+        intervalId: null
+      };
+
+      function formatClock(sec) {
+        const s = Math.max(0, Math.floor(sec));
+        const m = Math.floor(s / 60);
+        const r = s % 60;
+        return `${String(m).padStart(2, '0')}:${String(r).padStart(2, '0')}`;
+      }
+
+      function renderTimerDisplay() {
+        document.getElementById('timerClock').textContent = formatClock(timerState.remainingSec);
+        document.getElementById('timerModeLbl').textContent = `${timerState.mode} • ${timerState.label.toUpperCase()}`;
+        const ring = document.getElementById('timerRingArc');
+        const ringWrap = document.getElementById('timerRingWrap');
+        const circ = 2 * Math.PI * 106;
+        const ratio = timerState.totalSec > 0 ? timerState.remainingSec / timerState.totalSec : 0;
+        ring.setAttribute('stroke-dashoffset', (circ * (1 - ratio)).toFixed(2));
+        ring.setAttribute('stroke', timerState.mode === 'FOCUS' ? 'var(--ios-blue)' : 'var(--ios-green)');
+        if (ringWrap) ringWrap.classList.toggle('is-running', timerState.running);
+
+        const startBtn = document.getElementById('btnTimerStart');
+        startBtn.textContent = timerState.running ? '⏸ Pause' : '▶ Start';
+        document.getElementById('btnToggleFocusBreak').textContent =
+          timerState.mode === 'FOCUS' ? 'Switch to Break' : 'Switch to Focus';
+      }
+
+      function setTimerPreset(focusMins, breakMins, label) {
+        stopTimer();
+        timerState.focusMins = focusMins;
+        timerState.breakMins = breakMins;
+        timerState.label = label;
+        timerState.mode = 'FOCUS';
+        timerState.totalSec = focusMins * 60;
+        timerState.remainingSec = focusMins * 60;
+        renderTimerDisplay();
+      }
+
+      function startTimer() {
+        if (timerState.running) return;
+        unlockAudio();
+        timerState.running = true;
+        timerState.endTimestamp = Date.now() + timerState.remainingSec * 1000;
+        renderTimerDisplay();
+        timerState.intervalId = setInterval(() => {
+          const left = Math.ceil((timerState.endTimestamp - Date.now()) / 1000);
+          if (left <= 0) {
+            timerState.remainingSec = 0;
+            renderTimerDisplay();
+            handleTimerComplete();
+          } else {
+            timerState.remainingSec = left;
+            renderTimerDisplay();
+          }
+        }, 250);
+      }
+
+      function stopTimer() {
+        timerState.running = false;
+        timerState.endTimestamp = null;
+        if (timerState.intervalId) {
+          clearInterval(timerState.intervalId);
+          timerState.intervalId = null;
+        }
+        renderTimerDisplay();
+      }
+
+      function handleTimerComplete() {
+        stopTimer();
+        if (timerState.mode === 'FOCUS') {
+          logStudyMinutes(timerState.focusMins);
+          showToast(`Focus session complete! +${timerState.focusMins} mins logged.`, 'success');
+          startAlarmChime();
+          if (timerState.breakMins > 0) {
+            timerState.mode = 'BREAK';
+            timerState.totalSec = timerState.breakMins * 60;
+            timerState.remainingSec = timerState.breakMins * 60;
+          } else {
+            timerState.totalSec = timerState.focusMins * 60;
+            timerState.remainingSec = timerState.focusMins * 60;
+          }
+        } else {
+          showToast('Break finished — ready for next focus sprint!', 'info');
+          startAlarmChime();
+          timerState.mode = 'FOCUS';
+          timerState.totalSec = timerState.focusMins * 60;
+          timerState.remainingSec = timerState.focusMins * 60;
+        }
+        renderTimerDisplay();
+      }
+
+      function logStudyMinutes(deltaMins) {
+        const key = getLocalDateKey(new Date());
+        const current = state.studyLogs[key] || 0;
+        state.studyLogs[key] = Math.max(0, current + deltaMins);
+        saveState();
+        renderPlanner();
+        renderOverview();
+      }
+
+      function calculateStudyStreak() {
+        let streak = 0;
+        const d = new Date();
+        const todayMins = state.studyLogs[getLocalDateKey(d)] || 0;
+        if (todayMins === 0) {
+          d.setDate(d.getDate() - 1);
+        }
+        for (let i = 0; i < 365; i++) {
+          const k = getLocalDateKey(d);
+          if ((state.studyLogs[k] || 0) > 0) {
+            streak++;
+            d.setDate(d.getDate() - 1);
+          } else {
+            break;
+          }
+        }
+        return streak;
+      }
+
+      function renderPlanner() {
+        const todayKey = getLocalDateKey(new Date());
+        const todayMins = state.studyLogs[todayKey] || 0;
+        const todayHrs = todayMins / 60;
+        const goal = Math.max(0.5, Number(state.dailyTargetHours) || 10);
+        const pct = Math.min(100, (todayHrs / goal) * 100);
+        const streak = calculateStudyStreak();
+
+        document.getElementById('plannerStreakBadge').textContent = `🔥 ${streak} Day Streak`;
+        document.getElementById('todayLoggedHrs').textContent = todayHrs.toFixed(2);
+        document.getElementById('todayTargetDisplay').textContent = goal;
+        document.getElementById('todayPctMsg').textContent = `${Math.round((todayHrs / goal) * 100)}% of today's ${goal}h target`;
+        document.getElementById('todayStudyBar').style.width = `${pct.toFixed(1)}%`;
+
+        const cells = [];
+        for (let i = 13; i >= 0; i--) {
+          const dt = new Date();
+          dt.setDate(dt.getDate() - i);
+          const k = getLocalDateKey(dt);
+          const hrs = (state.studyLogs[k] || 0) / 60;
+          let lvl = '';
+          if (hrs >= goal * 0.85) lvl = 'heat-lvl-3';
+          else if (hrs >= goal * 0.4) lvl = 'heat-lvl-2';
+          else if (hrs > 0) lvl = 'heat-lvl-1';
+          cells.push(`
+            <div class="heat-cell ${lvl}" title="${k}: ${hrs.toFixed(1)} hrs">
+              ${dt.getDate()}
+            </div>
+          `);
+        }
+        document.getElementById('studyHeatmap14').innerHTML = cells.join('');
+
+        const taskBox = document.getElementById('taskListContainer');
+        if (state.tasks.length === 0) {
+          taskBox.innerHTML = `<p style="font-size:0.84rem;color:var(--text-muted);text-align:center;padding:12px;">No tasks added for today yet.</p>`;
+        } else {
+          taskBox.innerHTML = state.tasks.map((t) => {
+            const pCls = t.prio === 'High' ? 'prio-high' : t.prio === 'Low' ? 'prio-low' : 'prio-medium';
+            return `
+              <div class="task-item ${t.done ? 'done' : ''}">
+                <button type="button" class="task-check" data-task-toggle="${escapeHtml(t.id)}" aria-label="Toggle task">${t.done ? '✓' : ''}</button>
+                <span class="task-text">${escapeHtml(t.text)}</span>
+                <span class="badge ${pCls}">${escapeHtml(t.prio)}</span>
+                <button type="button" class="icon-action-btn" style="min-height:36px;padding:4px 10px;color:var(--ios-red);" data-task-del="${escapeHtml(t.id)}" aria-label="Delete task">✕</button>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      /* ========================================================================
+         VIEW 5: MOCK TEST LOG & PURE SVG TREND CHART
+         ======================================================================== */
+      function renderMocks() {
+        const tests = [...state.mockTests].sort((a, b) => a.date.localeCompare(b.date));
+        const count = tests.length;
+
+        document.getElementById('mockKpiCount').textContent = count;
+        if (count === 0) {
+          document.getElementById('mockKpiDelta').textContent = 'Add your first test below';
+          document.getElementById('mockKpiAvg').textContent = '-- / 720';
+          document.getElementById('mockKpiAvgPct').textContent = '0.0% accuracy avg';
+          document.getElementById('mockKpiBest').textContent = '-- / 720';
+          document.getElementById('mockKpiBestName').textContent = 'Personal high';
+          document.getElementById('mockKpiSubjAvg').textContent = 'P: -- • C: -- • B: --';
+        } else {
+          let sumTotal = 0, sumP = 0, sumC = 0, sumB = 0;
+          let best = tests[0];
+          tests.forEach((t) => {
+            sumTotal += t.total;
+            sumP += t.phy;
+            sumC += t.chem;
+            sumB += t.bio;
+            if (t.total > best.total) best = t;
+          });
+          const avg = sumTotal / count;
+          const latest = tests[count - 1];
+          const prev = count > 1 ? tests[count - 2] : null;
+          const delta = prev ? latest.total - prev.total : 0;
+
+          document.getElementById('mockKpiDelta').textContent = prev
+            ? `${delta >= 0 ? '+' : ''}${delta} vs. previous test`
+            : `Latest: ${latest.total} / 720`;
+          document.getElementById('mockKpiAvg').textContent = `${Math.round(avg)} / 720`;
+          document.getElementById('mockKpiAvgPct').textContent = `${((avg / 720) * 100).toFixed(1)}% average score`;
+          document.getElementById('mockKpiBest').textContent = `${best.total} / 720`;
+          document.getElementById('mockKpiBestName').textContent = best.name;
+          document.getElementById('mockKpiSubjAvg').textContent =
+            `P: ${Math.round(sumP / count)} • C: ${Math.round(sumC / count)} • B: ${Math.round(sumB / count)}`;
+        }
+
+        const tbody = document.getElementById('mockTableBody');
+        if (count === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:22px;">No mock tests logged yet. Record your first /720 score above!</td></tr>`;
+        } else {
+          tbody.innerHTML = [...tests].reverse().map((t) => {
+            let pillStyle = 'background:rgba(255,69,58,0.16);color:#FF453A;';
+            if (t.total >= 650) pillStyle = 'background:rgba(48,209,88,0.18);color:#30D158;';
+            else if (t.total >= 580) pillStyle = 'background:rgba(10,132,255,0.18);color:#0A84FF;';
+            else if (t.total >= 500) pillStyle = 'background:rgba(255,159,10,0.18);color:#FF9F0A;';
+
+            return `
+              <tr>
+                <td style="font-family:var(--font-mono);font-size:0.8rem;">${escapeHtml(t.date)}</td>
+                <td style="font-weight:600;">${escapeHtml(t.name)}</td>
+                <td style="font-family:var(--font-mono);color:var(--phy);font-weight:600;">${t.phy}</td>
+                <td style="font-family:var(--font-mono);color:var(--chem);font-weight:600;">${t.chem}</td>
+                <td style="font-family:var(--font-mono);color:var(--bot);font-weight:600;">${t.bio}</td>
+                <td><span class="score-pill" style="${pillStyle}">${t.total} / 720</span></td>
+                <td style="text-align:right;">
+                  <button type="button" class="btn btn-danger btn-sm" data-mock-del="${escapeHtml(t.id)}">Delete</button>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+
+        renderMockChart();
+      }
+
+      function renderMockChart() {
+        const svg = document.getElementById('mockTrendSvg');
+        const tests = [...state.mockTests].sort((a, b) => a.date.localeCompare(b.date));
+        const W = 840, H = 265;
+        const pad = { top: 22, right: 26, bottom: 36, left: 48 };
+        const plotW = W - pad.left - pad.right;
+        const plotH = H - pad.top - pad.bottom;
+
+        const yForScore = (sc) => {
+          const clamped = Math.max(0, Math.min(720, sc));
+          return pad.top + plotH * (1 - clamped / 720);
+        };
+
+        let gridLines = '';
+        [0, 180, 360, 500, 600, 650, 720].forEach((val) => {
+          const y = yForScore(val);
+          const isTarget = val === 600 || val === 650;
+          gridLines += `
+            <line x1="${pad.left}" y1="${y}" x2="${W - pad.right}" y2="${y}"
+                  stroke="${isTarget ? 'rgba(48,209,88,0.42)' : 'var(--border)'}"
+                  stroke-dasharray="${isTarget ? '5 5' : 'none'}" stroke-width="1" />
+            <text x="${pad.left - 8}" y="${y + 4}" text-anchor="end"
+                  fill="${isTarget ? '#30D158' : 'var(--text-muted)'}"
+                  font-family="var(--font-mono)" font-size="11" font-weight="600">${val}</text>
+          `;
+        });
+
+        if (tests.length === 0) {
+          svg.innerHTML = `
+            ${gridLines}
+            <text x="${W / 2}" y="${H / 2 + 4}" text-anchor="middle" fill="var(--text-muted)"
+                  font-size="14" font-weight="600">Log your first NEET CBT Mock Test (/720) to plot your score trajectory</text>
+          `;
+          return;
+        }
+
+        const pts = tests.map((t, idx) => {
+          const x = tests.length === 1
+            ? pad.left + plotW / 2
+            : pad.left + (idx / (tests.length - 1)) * plotW;
+          const y = yForScore(t.total);
+          return { x, y, t };
+        });
+
+        const polyPoints = pts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+        const areaPoints = `${pts[0].x.toFixed(1)},${pad.top + plotH} ${polyPoints} ${pts[pts.length - 1].x.toFixed(1)},${pad.top + plotH}`;
+
+        const dotsHtml = pts.map((p, idx) => `
+          <g class="mock-pt" data-idx="${idx}" style="cursor:pointer;">
+            <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="14" fill="transparent" />
+            <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6" fill="#0A84FF" stroke="var(--glass-surface-solid)" stroke-width="2.5" />
+            <text x="${p.x.toFixed(1)}" y="${p.y - 11}" text-anchor="middle" fill="var(--text-primary)"
+                  font-family="var(--font-mono)" font-size="11" font-weight="700">${p.t.total}</text>
+            <text x="${p.x.toFixed(1)}" y="${H - 12}" text-anchor="middle" fill="var(--text-muted)"
+                  font-family="var(--font-mono)" font-size="10">#${idx + 1}</text>
+          </g>
+        `).join('');
+
+        svg.innerHTML = `
+          <defs>
+            <linearGradient id="mockAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#0A84FF" stop-opacity="0.32" />
+              <stop offset="100%" stop-color="#0A84FF" stop-opacity="0.0" />
+            </linearGradient>
+          </defs>
+          ${gridLines}
+          ${pts.length > 1 ? `<polygon points="${areaPoints}" fill="url(#mockAreaGrad)" />` : ''}
+          ${pts.length > 1 ? `<polyline points="${polyPoints}" fill="none" stroke="#0A84FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />` : ''}
+          ${dotsHtml}
+        `;
+
+        const tooltip = document.getElementById('mockChartTooltip');
+        const box = document.getElementById('mockChartContainer');
+        svg.querySelectorAll('.mock-pt').forEach((g) => {
+          const showTip = () => {
+            const item = pts[Number(g.dataset.idx)];
+            if (!item) return;
+            tooltip.innerHTML = `
+              <div style="font-weight:700;color:var(--ios-blue);margin-bottom:2px;">${escapeHtml(item.t.name)}</div>
+              <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-secondary);margin-bottom:4px;">${escapeHtml(item.t.date)}</div>
+              <div style="font-family:var(--font-mono);font-weight:700;">Total: ${item.t.total} / 720</div>
+              <div style="font-family:var(--font-mono);font-size:0.72rem;">P: ${item.t.phy} | C: ${item.t.chem} | B: ${item.t.bio}</div>
+            `;
+            const rect = box.getBoundingClientRect();
+            const leftPct = (item.x / W) * rect.width;
+            tooltip.style.left = `${Math.min(rect.width - 210, Math.max(8, leftPct - 90))}px`;
+            tooltip.style.top = '10px';
+            tooltip.style.display = 'block';
+          };
+          g.addEventListener('mouseenter', showTip);
+          g.addEventListener('click', showTip);
+          g.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+        });
+      }
+
+      /* ========================================================================
+         VIEW 6: BACKUP, IMPORT & RESET
+         ======================================================================== */
+      function updateStorageMeta() {
+        try {
+          const jsonStr = JSON.stringify(state);
+          const kb = (new Blob([jsonStr]).size / 1024).toFixed(1);
+          document.getElementById('storageSizeBadge').textContent = `LocalStorage (${kb} KB)`;
+          document.getElementById('lastSavedText').textContent = `Last saved: ${new Date().toLocaleTimeString()}`;
+        } catch (_) {}
+      }
+
+      function exportBackupJson() {
+        try {
+          const dataStr = JSON.stringify(state, null, 2);
+          const blob = new Blob([dataStr], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `NEET_2027_Command_Center_Backup_${getLocalDateKey(new Date())}.json`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showToast('JSON backup downloaded!', 'success');
+        } catch (err) {
+          showToast('Download blocked by browser — try Copy Backup JSON instead.', 'warning');
+        }
+      }
+
+      function copyBackupJson() {
+        const dataStr = JSON.stringify(state, null, 2);
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = dataStr;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          showToast('Backup JSON copied to clipboard!', 'success');
+        } catch (err) {
+          showToast('Unable to copy automatically — use Download JSON.', 'warning');
+        }
+      }
+
+      function handleImportFile(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const parsed = JSON.parse(e.target.result);
+            if (!parsed || !Array.isArray(parsed.chapters) || parsed.chapters.length === 0) {
+              throw new Error('Invalid backup structure');
+            }
+            state = {
+              ...createDefaultState(),
+              ...parsed
+            };
+            saveState();
+            syncControlsFromState();
+            renderAll();
+            showToast(`Restored ${state.chapters.length} chapters & logs successfully!`, 'success');
+          } catch (err) {
+            showToast('Invalid JSON backup file. Import aborted.', 'danger');
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      /* ========================================================================
+         MODALS (Strict display:none toggle)
+         ======================================================================== */
+      function openModal(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('open');
+      }
+
+      function closeModal(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('open');
+      }
+
+      function openConfirmModal(title, body, onConfirm) {
+        document.getElementById('confirmModalTitle').textContent = title;
+        document.getElementById('confirmModalBody').textContent = body;
+        uiState.pendingConfirmFn = onConfirm;
+        openModal('confirmModal');
+      }
+
+      /* ========================================================================
+         EVENT BINDING (CLEAN EVENT DELEGATION — ZERO GLOBAL STATE-MUTATING LISTENERS)
+         ======================================================================== */
+      function syncDatePresetButtons() {
+        const p4 = document.getElementById('presetMay4');
+        const p2 = document.getElementById('presetMay2');
+        if (p4) p4.classList.toggle('active', state.targetDate === '2027-05-04');
+        if (p2) p2.classList.toggle('active', state.targetDate === '2027-05-02');
+      }
+
+      function syncControlsFromState() {
+        document.documentElement.setAttribute('data-theme', state.theme || 'dark');
+        const isDark = state.theme === 'dark';
+        document.getElementById('themeLabelSidebar').textContent = isDark ? 'Dark Appearance' : 'Light Appearance';
+        document.getElementById('themeIconSidebar').textContent = isDark ? '🌙' : '☀️';
+        document.getElementById('themeIconMobile').textContent = isDark ? '🌙' : '☀️';
+
+        document.getElementById('targetDatePicker').value = state.targetDate;
+        document.getElementById('startDatePicker').value = state.startDate;
+        document.getElementById('dailyTargetInput').value = state.dailyTargetHours;
+        document.getElementById('mockDate').value = getLocalDateKey(new Date());
+        syncDatePresetButtons();
+        updateChimeButtonUI();
+      }
+
+      function renderAll() {
+        updateCountdownAndPace();
+        renderOverview();
+        renderSyllabus();
+        renderRoadmap();
+        renderPlanner();
+        renderMocks();
+        updateStorageMeta();
+      }
+
+      function bindEvents() {
+        // Navigation
+        document.getElementById('sidebarNav').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-tab]');
+          if (btn) switchTab(btn.dataset.tab);
+        });
+        document.getElementById('mobileNav').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-tab]');
+          if (btn) switchTab(btn.dataset.tab);
+        });
+
+        // Theme toggles
+        const toggleTheme = () => applyTheme(state.theme === 'dark' ? 'light' : 'dark');
+        document.getElementById('themeToggleSidebar').addEventListener('click', toggleTheme);
+        document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
+
+        // Target & Start Date controls
+        document.getElementById('targetDatePicker').addEventListener('change', (e) => {
+          if (e.target.value) {
+            state.targetDate = e.target.value;
+            saveState();
+            syncDatePresetButtons();
+            updateCountdownAndPace();
+            renderRoadmap();
+          }
+        });
+        document.getElementById('presetMay4').addEventListener('click', () => {
+          state.targetDate = '2027-05-04';
+          document.getElementById('targetDatePicker').value = '2027-05-04';
+          saveState();
+          syncDatePresetButtons();
+          updateCountdownAndPace();
+          renderRoadmap();
+          showToast('Target date set to May 4, 2027', 'info');
+        });
+        document.getElementById('presetMay2').addEventListener('click', () => {
+          state.targetDate = '2027-05-02';
+          document.getElementById('targetDatePicker').value = '2027-05-02';
+          saveState();
+          syncDatePresetButtons();
+          updateCountdownAndPace();
+          renderRoadmap();
+          showToast('Target date set to May 2, 2027', 'info');
+        });
+        document.getElementById('startDatePicker').addEventListener('change', (e) => {
+          if (e.target.value) {
+            state.startDate = e.target.value;
+            saveState();
+            updateCountdownAndPace();
+            renderRoadmap();
+          }
+        });
+
+        // Overview actions
+        document.getElementById('btnJumpSyllabus').addEventListener('click', () => switchTab('syllabus'));
+        document.getElementById('btnJumpTimer').addEventListener('click', () => switchTab('pomodoro'));
+        document.getElementById('btnFilterHW').addEventListener('click', () => {
+          uiState.filters.status = 'HIGH_WEIGHTAGE';
+          document.getElementById('filterStatus').value = 'HIGH_WEIGHTAGE';
+          switchTab('syllabus');
+          renderSyllabus();
+        });
+
+        document.getElementById('subjectProgressList').addEventListener('click', (e) => {
+          const row = e.target.closest('[data-jump-subject]');
+          if (row) {
+            uiState.filters.subject = row.dataset.jumpSubject;
+            switchTab('syllabus');
+            renderSyllabus();
+          }
+        });
+
+        document.getElementById('quickHwQueue').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-quick-lec]');
+          if (!btn) return;
+          const ch = state.chapters.find((c) => c.id === btn.dataset.quickLec);
+          if (ch) {
+            ch.stages.lecture = !ch.stages.lecture;
+            saveState();
+            renderAll();
+            showToast(`${ch.name}: Lecture ${ch.stages.lecture ? 'completed' : 'unchecked'}`, 'success');
+          }
+        });
+
+        // Syllabus filter controls
+        document.getElementById('filterSearch').addEventListener('input', (e) => {
+          uiState.filters.search = e.target.value;
+          renderSyllabus();
+        });
+        document.getElementById('filterClass').addEventListener('change', (e) => {
+          uiState.filters.cls = e.target.value;
+          renderSyllabus();
+        });
+        document.getElementById('filterPhase').addEventListener('change', (e) => {
+          uiState.filters.phase = e.target.value;
+          renderSyllabus();
+        });
+        document.getElementById('filterStatus').addEventListener('change', (e) => {
+          uiState.filters.status = e.target.value;
+          renderSyllabus();
+        });
+        document.getElementById('subjectFilterPills').addEventListener('click', (e) => {
+          const pill = e.target.closest('[data-subj]');
+          if (pill) {
+            uiState.filters.subject = pill.dataset.subj;
+            renderSyllabus();
+          }
+        });
+        document.getElementById('btnResetFilters').addEventListener('click', () => {
+          uiState.filters = { search: '', subject: 'ALL', cls: 'ALL', phase: 'ALL', status: 'ALL' };
+          document.getElementById('filterSearch').value = '';
+          document.getElementById('filterClass').value = 'ALL';
+          document.getElementById('filterPhase').value = 'ALL';
+          document.getElementById('filterStatus').value = 'ALL';
+          renderSyllabus();
+        });
+
+        // Syllabus chapter card delegation
+        const chapterListEl = document.getElementById('chapterListContainer');
+        chapterListEl.addEventListener('click', (e) => {
+          const actionEl = e.target.closest('[data-action]');
+          if (!actionEl) return;
+          const action = actionEl.dataset.action;
+          const id = actionEl.dataset.id;
+          const ch = state.chapters.find((c) => c.id === id);
+          if (!ch) return;
+
+          if (action === 'toggle-stage') {
+            const st = actionEl.dataset.stage;
+            ch.stages[st] = !ch.stages[st];
+            saveState();
+            renderAll();
+          } else if (action === 'toggle-drawer') {
+            if (uiState.openNoteIds.has(id)) uiState.openNoteIds.delete(id);
+            else uiState.openNoteIds.add(id);
+            renderSyllabus();
+          } else if (action === 'delete-chapter') {
+            openConfirmModal('Delete Custom Chapter', `Remove "${ch.name}" from your syllabus tracker?`, () => {
+              state.chapters = state.chapters.filter((c) => c.id !== id);
+              uiState.openNoteIds.delete(id);
+              saveState();
+              renderAll();
+              showToast('Custom chapter removed.', 'info');
+            });
+          }
+        });
+
+        chapterListEl.addEventListener('change', (e) => {
+          const actionEl = e.target.closest('[data-action]');
+          if (!actionEl) return;
+          const action = actionEl.dataset.action;
+          const ch = state.chapters.find((c) => c.id === actionEl.dataset.id);
+          if (!ch) return;
+
+          if (action === 'edit-hours') {
+            const val = parseFloat(actionEl.value);
+            if (!Number.isNaN(val) && val >= 0) {
+              ch.hours = Math.round(val * 10) / 10;
+              saveState();
+              updateCountdownAndPace();
+              renderOverview();
+              renderRoadmap();
+            }
+          } else if (action === 'edit-url') {
+            ch.url = actionEl.value.trim();
+            saveState();
+            renderSyllabus();
+          }
+        });
+
+        chapterListEl.addEventListener('input', (e) => {
+          const actionEl = e.target.closest('[data-action="edit-notes"]');
+          if (!actionEl) return;
+          const ch = state.chapters.find((c) => c.id === actionEl.dataset.id);
+          if (ch) {
+            ch.notes = actionEl.value;
+            saveState();
+          }
+        });
+
+        // Add Custom Chapter Modal
+        document.getElementById('btnOpenAddChapter').addEventListener('click', () => {
+          document.getElementById('chapterModalForm').reset();
+          document.getElementById('chHoursInput').value = '4';
+          openModal('chapterModal');
+        });
+
+        document.getElementById('chapterModalForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('chNameInput').value.trim();
+          if (!name) return;
+          const newCh = {
+            id: 'custom-' + Date.now(),
+            name,
+            subject: document.getElementById('chSubjInput').value,
+            cls: document.getElementById('chClassInput').value,
+            category: document.getElementById('chCatInput').value.trim() || 'Custom',
+            highWeightage: document.getElementById('chHwInput').checked,
+            phase: Number(document.getElementById('chPhaseInput').value) || 1,
+            hours: Math.max(0, parseFloat(document.getElementById('chHoursInput').value) || 0),
+            url: document.getElementById('chUrlInput').value.trim(),
+            notes: document.getElementById('chNotesInput').value.trim(),
+            custom: true,
+            stages: { lecture: false, ncert: false, pyqs: false, rev1: false, rev2: false }
+          };
+          state.chapters.unshift(newCh);
+          saveState();
+          closeModal('chapterModal');
+          renderAll();
+          showToast(`Added "${name}" to syllabus!`, 'success');
+        });
+
+        // Roadmap milestone checkboxes & direct phase jump
+        document.getElementById('phaseCardsGrid').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-milestone-id]');
+          if (btn) {
+            const msId = btn.dataset.milestoneId;
+            state.milestonesDone[msId] = !state.milestonesDone[msId];
+            saveState();
+            renderRoadmap();
+            return;
+          }
+          const card = e.target.closest('[data-open-phase]');
+          if (card) {
+            const phaseVal = String(card.dataset.openPhase);
+            uiState.filters = { search: '', subject: 'ALL', cls: 'ALL', phase: phaseVal, status: 'ALL' };
+            document.getElementById('filterSearch').value = '';
+            document.getElementById('filterClass').value = 'ALL';
+            document.getElementById('filterPhase').value = phaseVal;
+            document.getElementById('filterStatus').value = 'ALL';
+            switchTab('syllabus');
+            renderSyllabus();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast(`Filtered Syllabus to Phase ${phaseVal}`, 'info');
+          }
+        });
+
+        // Timer Presets & Controls
+        document.getElementById('timerPresets').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-focus]');
+          if (!btn) return;
+          document.querySelectorAll('#timerPresets .preset-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          setTimerPreset(Number(btn.dataset.focus), Number(btn.dataset.break), btn.dataset.label);
+        });
+
+        document.getElementById('btnTimerStart').addEventListener('click', () => {
+          if (timerState.running) stopTimer();
+          else startTimer();
+        });
+
+        document.getElementById('btnTimerReset').addEventListener('click', () => {
+          stopTimer();
+          const mins = timerState.mode === 'FOCUS' ? timerState.focusMins : (timerState.breakMins || timerState.focusMins);
+          timerState.totalSec = mins * 60;
+          timerState.remainingSec = mins * 60;
+          renderTimerDisplay();
+        });
+
+        document.getElementById('btnToggleFocusBreak').addEventListener('click', () => {
+          stopTimer();
+          if (timerState.mode === 'FOCUS') {
+            const bMins = timerState.breakMins > 0 ? timerState.breakMins : 5;
+            timerState.mode = 'BREAK';
+            timerState.totalSec = bMins * 60;
+            timerState.remainingSec = bMins * 60;
+          } else {
+            timerState.mode = 'FOCUS';
+            timerState.totalSec = timerState.focusMins * 60;
+            timerState.remainingSec = timerState.focusMins * 60;
+          }
+          renderTimerDisplay();
+        });
+
+        // EXPLICIT CHIME TOGGLE BUTTON (Only this button turns Chime ON/OFF)
+        document.getElementById('btnChimeToggle').addEventListener('click', () => {
+          state.chimeEnabled = !state.chimeEnabled;
+          saveState();
+          updateChimeButtonUI();
+          if (state.chimeEnabled) {
+            playThreeNoteChime();
+            showToast('Chime: ON — completion alert enabled.', 'success');
+          } else {
+            stopAlarmChime();
+            showToast('Chime: OFF — completion alerts muted.', 'info');
+          }
+        });
+
+        // Dedicated Stop Chime button while alarm is ringing
+        document.getElementById('btnStopChime').addEventListener('click', () => {
+          stopAlarmChime();
+          showToast('Alarm chime stopped.', 'info');
+        });
+
+        document.getElementById('btnTimerLogNow').addEventListener('click', () => {
+          if (timerState.mode !== 'FOCUS') {
+            showToast('Switch to Focus mode to log study minutes.', 'warning');
+            return;
+          }
+          const elapsedSec = timerState.totalSec - timerState.remainingSec;
+          const elapsedMins = Math.max(1, Math.round(elapsedSec / 60));
+          logStudyMinutes(elapsedMins);
+          showToast(`Logged +${elapsedMins} focus mins to today!`, 'success');
+        });
+
+        // Daily Study Goal & Quick Logs
+        document.getElementById('dailyTargetInput').addEventListener('change', (e) => {
+          const val = parseFloat(e.target.value);
+          if (!Number.isNaN(val) && val >= 0.5) {
+            state.dailyTargetHours = val;
+            saveState();
+            renderPlanner();
+            renderOverview();
+          }
+        });
+
+        document.getElementById('quickLogButtons').addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-add-mins]');
+          if (!btn) return;
+          const delta = Number(btn.dataset.addMins);
+          logStudyMinutes(delta);
+          showToast(`${delta > 0 ? '+' : ''}${delta} mins updated in today's log.`, 'info');
+        });
+
+        // Daily Priority Tasks
+        document.getElementById('taskAddForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const input = document.getElementById('taskInput');
+          const text = input.value.trim();
+          if (!text) return;
+          state.tasks.unshift({
+            id: 'task-' + Date.now(),
+            text,
+            prio: document.getElementById('taskPrio').value,
+            done: false
+          });
+          input.value = '';
+          saveState();
+          renderPlanner();
+        });
+
+        document.getElementById('taskListContainer').addEventListener('click', (e) => {
+          const toggleBtn = e.target.closest('[data-task-toggle]');
+          if (toggleBtn) {
+            const t = state.tasks.find((item) => item.id === toggleBtn.dataset.taskToggle);
+            if (t) {
+              t.done = !t.done;
+              saveState();
+              renderPlanner();
+            }
+            return;
+          }
+          const delBtn = e.target.closest('[data-task-del]');
+          if (delBtn) {
+            state.tasks = state.tasks.filter((item) => item.id !== delBtn.dataset.taskDel);
+            saveState();
+            renderPlanner();
+          }
+        });
+
+        document.getElementById('btnClearDoneTasks').addEventListener('click', () => {
+          state.tasks = state.tasks.filter((t) => !t.done);
+          saveState();
+          renderPlanner();
+          showToast('Cleared completed tasks.', 'info');
+        });
+
+        // Mock Test Form
+        const updateLiveMockTotal = () => {
+          const p = parseInt(document.getElementById('mockPhy').value, 10) || 0;
+          const c = parseInt(document.getElementById('mockChem').value, 10) || 0;
+          const b = parseInt(document.getElementById('mockBio').value, 10) || 0;
+          document.getElementById('mockLiveTotalBadge').textContent = `Auto Total: ${p + c + b} / 720`;
+        };
+        ['mockPhy', 'mockChem', 'mockBio'].forEach((id) => {
+          document.getElementById(id).addEventListener('input', updateLiveMockTotal);
+        });
+
+        document.getElementById('mockAddForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const date = document.getElementById('mockDate').value;
+          const name = document.getElementById('mockName').value.trim();
+          const phy = parseInt(document.getElementById('mockPhy').value, 10) || 0;
+          const chem = parseInt(document.getElementById('mockChem').value, 10) || 0;
+          const bio = parseInt(document.getElementById('mockBio').value, 10) || 0;
+          if (!date || !name) return;
+
+          state.mockTests.push({
+            id: 'mock-' + Date.now(),
+            date,
+            name,
+            phy,
+            chem,
+            bio,
+            total: phy + chem + bio
+          });
+          saveState();
+          document.getElementById('mockName').value = '';
+          document.getElementById('mockPhy').value = '';
+          document.getElementById('mockChem').value = '';
+          document.getElementById('mockBio').value = '';
+          updateLiveMockTotal();
+          renderMocks();
+          showToast(`Mock test saved (${phy + chem + bio}/720)!`, 'success');
+        });
+
+        document.getElementById('mockTableBody').addEventListener('click', (e) => {
+          const delBtn = e.target.closest('[data-mock-del]');
+          if (!delBtn) return;
+          const id = delBtn.dataset.mockDel;
+          openConfirmModal('Delete Mock Test', 'Remove this mock test record permanently?', () => {
+            state.mockTests = state.mockTests.filter((m) => m.id !== id);
+            saveState();
+            renderMocks();
+            showToast('Mock test deleted.', 'info');
+          });
+        });
+
+        // Backup & Import
+        document.getElementById('btnExportJson').addEventListener('click', exportBackupJson);
+        document.getElementById('btnCopyJson').addEventListener('click', copyBackupJson);
+
+        const dropZone = document.getElementById('importDropZone');
+        const fileInput = document.getElementById('importFileInput');
+        dropZone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+          if (e.target.files && e.target.files[0]) {
+            handleImportFile(e.target.files[0]);
+            fileInput.value = '';
+          }
+        });
+        dropZone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('dragover');
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleImportFile(e.dataTransfer.files[0]);
+          }
+        });
+
+        // Double-Confirmation Reset Flow
+        document.getElementById('btnTriggerReset').addEventListener('click', () => {
+          document.getElementById('resetStep1').style.display = 'block';
+          document.getElementById('resetStep2').style.display = 'none';
+          document.getElementById('resetConfirmInput').value = '';
+          const finalBtn = document.getElementById('btnResetFinal');
+          finalBtn.disabled = true;
+          finalBtn.style.opacity = '0.45';
+          openModal('resetModal');
+        });
+
+        document.getElementById('btnResetStep1Next').addEventListener('click', () => {
+          document.getElementById('resetStep1').style.display = 'none';
+          document.getElementById('resetStep2').style.display = 'block';
+          document.getElementById('resetConfirmInput').focus();
+        });
+
+        document.getElementById('resetConfirmInput').addEventListener('input', (e) => {
+          const isValid = e.target.value.trim() === 'RESET';
+          const finalBtn = document.getElementById('btnResetFinal');
+          finalBtn.disabled = !isValid;
+          finalBtn.style.opacity = isValid ? '1' : '0.45';
+        });
+
+        document.getElementById('btnResetFinal').addEventListener('click', () => {
+          if (document.getElementById('resetConfirmInput').value.trim() !== 'RESET') return;
+          stopTimer();
+          stopAlarmChime();
+          state = createDefaultState();
+          saveState();
+          syncControlsFromState();
+          renderAll();
+          closeModal('resetModal');
+          showToast('All data reset to default 83-chapter NEET 2027 template.', 'warning');
+        });
+
+        // Explicit Modal Close Buttons
+        document.querySelectorAll('[data-close-modal]').forEach((btn) => {
+          btn.addEventListener('click', () => closeModal(btn.dataset.closeModal));
+        });
+
+        document.querySelectorAll('.modal-backdrop').forEach((backdrop) => {
+          backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) closeModal(backdrop.id);
+          });
+        });
+
+        document.getElementById('confirmModalOk').addEventListener('click', () => {
+          const fn = uiState.pendingConfirmFn;
+          uiState.pendingConfirmFn = null;
+          closeModal('confirmModal');
+          if (typeof fn === 'function') fn();
+        });
+      }
+
+      /* ========================================================================
+         INITIALIZE APPLICATION
+         ======================================================================== */
+      function init() {
+        syncControlsFromState();
+        bindEvents();
+        renderTimerDisplay();
+        renderAll();
+        setInterval(updateCountdownAndPace, 1000);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
